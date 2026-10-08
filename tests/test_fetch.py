@@ -65,3 +65,11 @@ def test_fetch_skips_complete_file_and_checks_md5(tmp_path, monkeypatch):
     bad = fetch.Item("t", "https://unused", "x.bin", len(data), "0" * 32)
     with pytest.raises(SystemExit, match="md5"):
         fetch.fetch(bad, tmp_path)
+
+
+def test_select_spread_samples_evenly():
+    keys = [(f"cruise/EK80/D2023072{i}-T000000.raw", 1) for i in range(8)]
+    spec = {"endpoint": "e", "selections": [
+        {"prefix": "cruise/EK80/", "pattern": r"^D", "count": 2, "spread": True}]}
+    names = [i.name for i in fetch.select_s3("noaa", spec, fake_lister(keys))]
+    assert names == ["D20230722-T000000.raw", "D20230726-T000000.raw"]

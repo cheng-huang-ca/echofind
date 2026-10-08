@@ -51,6 +51,7 @@ noaa:
       - prefix: data/raw/Henry_B._Bigelow/HB2305/EK80/
         pattern: '^D\d{8}-T\d{6}\.raw$'
         count: 8
+        spread: true  # evenly over the cruise; the first files are 20 s dockside tests
       - prefix: data/raw/Henry_B._Bigelow/HB2305/
         pattern: '^README_.*\.md$'
         count: 1
