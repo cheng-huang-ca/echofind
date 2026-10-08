@@ -162,7 +162,7 @@ class BottomPatches:
     power: np.ndarray   # SL * sigma * b^2 / r^4 * absorption, times texture (uPa^2)
 
     @staticmethod
-    def build(sonar: Sonar, scene: Scene, rng: np.random.Generator, cells_per_res: int = 4,
+    def build(sonar: Sonar, scene: Scene, rng: np.random.Generator, cells_per_res: int = 8,
               n_az: int = 41) -> BottomPatches:
         c, alpha = scene.water.c, scene.water.alpha(sonar.fc)
         h = scene.water_depth_m - sonar.depth_m
