@@ -1,0 +1,19 @@
+{
+  "script": "w2_pd_curves",
+  "git_commit": "8f89be17cf2d4b8af0d56c1b3b08869206aa913a",
+  "data_manifest": "c20cd1370cd09ed0",
+  "config": {
+    "seed": 20261008,
+    "B": 20000.0,
+    "T": 0.001,
+    "fc": 80000.0,
+    "pfa": 0.0001,
+    "L": 2048,
+    "n_trials": 4000,
+    "cfar": "N=32, G=oversample, OS k=24, stride per config",
+    "mbari": [
+      60.0,
+      30.0
+    ]
+  }
+}

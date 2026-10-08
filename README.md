@@ -15,7 +15,7 @@ but 47% on unseen data (Nga et al., Remote Sensing 16(21):4036, 2024).
 | --- | --- |
 | S0 Scaffold: repo, CI, data fetcher | done |
 | W1 Signal atlas | NOAA and MBARI done ([atlas](reports/signal_atlas.md), [noise register](reports/noise_register.csv)); UATD and Bath pending network access |
-| W2 Physics and DSP front end | not started |
+| W2 Physics and DSP front end | done: `echofind.dsp` + `echofind.sim`, tests vs closed form, Pd-vs-SNR, [design note](reports/w2_frontend_design.md); UATD/Bath range-profile bridge pending |
 | W3 Model ladder | not started |
 | W4 Field-honest evaluation | not started |
 | W5 Edge deployment | not started |

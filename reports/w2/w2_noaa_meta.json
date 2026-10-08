@@ -1,0 +1,15 @@
+{
+  "script": "w2_noaa",
+  "git_commit": "582ee1a9382649fdad17ab1a976feeedba0e2f52",
+  "data_manifest": "c20cd1370cd09ed0",
+  "config": {
+    "files": [
+      "D20230726-T231007.raw",
+      "D20230722-T131829.raw"
+    ],
+    "r_min": 10.0,
+    "cfar": "N=32 G=4 Pfa=1e-4",
+    "bottom": "persist 0.3 m, cell 0.05 m, min 15 dB",
+    "tvg": "20 log r"
+  }
+}
