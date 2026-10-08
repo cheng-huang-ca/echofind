@@ -18,10 +18,13 @@ COLUMNS = ["beam", "bearing_deg", "range_m", "level_db", "snr_db", "range_extent
 
 def candidates(power: np.ndarray, det: np.ndarray, thr: np.ndarray, r: np.ndarray,
                bearing_deg: np.ndarray | None = None, bottom_m: np.ndarray | None = None,
-               bottom_guard_m: float = 0.3, scale_factor: float = 1.0) -> pd.DataFrame:
+               bottom_guard_m: float = 0.3, scale_factor: float = 1.0,
+               min_snr_db: float | None = None) -> pd.DataFrame:
     """Candidate table from beams x range arrays of power, detections and thresholds.
 
     snr_db is the peak power over the CFAR noise estimate (threshold / scale_factor).
+    min_snr_db drops weak components: CFAR finds echoes, and in real water most of them are
+    plankton, bubbles or fish well below a body's echo (see reports/w2_frontend_design.md).
     """
     p = np.atleast_2d(power)
     d = np.atleast_2d(det).copy()
@@ -54,5 +57,7 @@ def candidates(power: np.ndarray, det: np.ndarray, thr: np.ndarray, r: np.ndarra
             "beam_extent": int(sl[0].stop - sl[0].start),
             "n_cells": int(m.sum()),
         })
-    return pd.DataFrame(rows, columns=COLUMNS).sort_values(["beam", "range_m"],
-                                                         ignore_index=True)
+    df = pd.DataFrame(rows, columns=COLUMNS)
+    if min_snr_db is not None:
+        df = df[df.snr_db >= min_snr_db]
+    return df.sort_values(["beam", "range_m"], ignore_index=True)

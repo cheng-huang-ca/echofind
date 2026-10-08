@@ -35,6 +35,7 @@ class FrontEndConfig:
     # Forward-looking or tilted beams: the seabed beyond the bottom-entry range is still search
     # area (a body lies there), so keep it and let CFAR work against the reverberation.
     exclude_beyond_bottom: bool = False
+    min_snr_db: float | None = None     # post-CFAR gate on candidate SNR
 
 
 @dataclass
@@ -74,7 +75,7 @@ def process_iq(iq: np.ndarray, fs: float, replica: np.ndarray,
               else np.full(iq.shape[0], np.nan))
     cands = candidates(power, det, thr, r, bearing_deg,
                        bottom if cfg.exclude_beyond_bottom else None, cfg.bottom_guard_m,
-                       scale_factor(cfg.cfar))
+                       scale_factor(cfg.cfar), cfg.min_snr_db)
     return FrontEndResult(r, iq, mf, power, tvg_db, det, thr, bottom, cands)
 
 
