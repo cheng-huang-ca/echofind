@@ -120,3 +120,15 @@ def test_iq_demodulation_recovers_baseband():
     rho = np.abs(np.vdot(bb[core], s[core])) / np.linalg.norm(bb[core]) / np.linalg.norm(s[core])
     assert rho > 0.995
     assert np.abs(bb[core]).mean() == pytest.approx(np.abs(s[core]).mean(), rel=0.03)
+
+
+def test_sum_adjacent_beams():
+    """Wider-beam emulation: incoherent sum of k beams' power, or coherent sum of samples
+    (|sum|^2 = k^2 for k identical unit beams)."""
+    from echofind.dsp.frontend import sum_adjacent_beams
+
+    x = np.ones((7, 5), complex)
+    inc = sum_adjacent_beams(x, 3)
+    coh = sum_adjacent_beams(x, 3, coherent=True)
+    assert inc.shape == (2, 5) and np.allclose(inc, 3.0)
+    assert np.allclose(np.abs(coh) ** 2, 9.0)
