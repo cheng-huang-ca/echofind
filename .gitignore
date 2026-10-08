@@ -1,5 +1,5 @@
 # data never enters git (see CLAUDE.md)
-data/
+/data/
 mlruns/
 *.raw
 *.wav
