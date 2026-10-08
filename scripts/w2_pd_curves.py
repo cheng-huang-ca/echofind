@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parent))
-from w2_common import C, INK2, OUT, RAW, savefig, setup_style, write_meta  # noqa: E402
+from w2_common import INK2, OUT, RAW, C, savefig, setup_style, write_meta  # noqa: E402
 
 from echofind.dsp.cfar import CFARConfig, cfar_detect, cfar_threshold  # noqa: E402
 from echofind.dsp.cfar import pd_swerling1 as pd_cfar_sw1  # noqa: E402
@@ -175,7 +175,8 @@ def main():
     s90 = snr_at(df)
     s90.to_csv(OUT / "snr_at_pd90.csv", index=False)
     write_meta("w2_pd_curves", {"seed": SEED, "B": B, "T": T, "fc": FC, "pfa": PFA, "L": L,
-                                "n_trials": N_TRIALS, "cfar": "N=32, G=oversample, OS k=24, stride per config",
+                                "n_trials": N_TRIALS,
+                                "cfar": "N=32, G=oversample, OS k=24, stride per config",
                                 "mbari": [MBARI_START_S, MBARI_DUR_S]})
 
     # ---- figure 1: white noise, oversampled front end, both Swerling cases

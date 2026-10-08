@@ -1,0 +1,29 @@
+{
+  "script": "w2_sim_sweeps",
+  "git_commit": "3402c8a690f76beb8060c73765708dac679dc209",
+  "data_manifest": "c20cd1370cd09ed0",
+  "config": {
+    "seed": 20261009,
+    "h2": "fc 120 kHz, fs 600 kHz, MF at 4B",
+    "h3": "N=24, G=2, Pfa=1e-3, +15 dB step",
+    "pd_vs_range": {
+      "ranges": [
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        40,
+        50,
+        60
+      ],
+      "n_pings": 100,
+      "depth_m": 5.0,
+      "sl_db": 200,
+      "nl_db": 40,
+      "ts_db": -20,
+      "cfar": "OS N=32 stride 4"
+    }
+  }
+}
