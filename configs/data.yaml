@@ -1,0 +1,70 @@
+# Data sources for EchoFind. `make data` reads this file; see docs/PLAN.md "Public datasets".
+# Everything lands under data/raw/<source>/ and is never committed.
+# Sizes and checksums were verified against the source on 2026-10-07.
+
+bath:
+  description: Side-scan sonar (StarFish 450/990 kHz) with a sunken mannequin; Bath and Bristol, UK
+  license: CC BY 4.0
+  doi: 10.15125/BATH-01467
+  notes: >
+    Per the archive README, most target/background labels were lost. Some directories hold a
+    'target' subdirectory with target examples. The paper used only the 990 kHz data.
+  files:
+    - url: https://researchdata.bath.ac.uk/1467/1/sidescan_sonar_images_PRIME_CNN_training.zip
+      name: sidescan_sonar_images_PRIME_CNN_training.zip
+      size: 6165203835
+      extract: true
+    - url: https://researchdata.bath.ac.uk/1467/2/README.txt
+      name: README.txt
+
+uatd:
+  description: Tritech Gemini 1200ik multibeam FLS, 720/1200 kHz, 10 classes incl. a human body model
+  license: CC BY 4.0
+  doi: 10.6084/m9.figshare.21331143.v3
+  files:
+    - url: https://ndownloader.figshare.com/files/37883163
+      name: UATD_Training.zip
+      size: 3869955319
+      md5: 891b146871edcda313cdbd8cd6252f39
+      extract: true
+    - url: https://ndownloader.figshare.com/files/37857276
+      name: UATD_Test_1.zip
+      size: 421934004
+      md5: 267818131310873c05950879bfec3e6f
+      extract: true
+    - url: https://ndownloader.figshare.com/files/37857279
+      name: UATD_Test_2.zip
+      size: 424608381
+      md5: 979479864b52925edca49074a09c1b3d
+      extract: true
+
+noaa:
+  description: NOAA Henry B. Bigelow cruise HB2305, Simrad EK80 raw files (CW and broadband complex)
+  license: Free use under the NOAA disclaimer
+  s3:
+    endpoint: https://noaa-wcsd-pds.s3.amazonaws.com
+    selections:
+      # First N keys (sorted) under each prefix whose basename matches the pattern.
+      - prefix: data/raw/Henry_B._Bigelow/HB2305/EK80/
+        pattern: '^ComplexSamples-.*\.raw$'
+        count: 2  # the cruise has only two broadband (complex) files
+      - prefix: data/raw/Henry_B._Bigelow/HB2305/EK80/
+        pattern: '^D\d{8}-T\d{6}\.raw$'
+        count: 8
+      - prefix: data/raw/Henry_B._Bigelow/HB2305/
+        pattern: '^README_.*\.md$'
+        count: 1
+  max_bytes: 4000000000
+
+mbari:
+  # October 2024 is absent from the archive, so the autumn file comes from September.
+  description: MBARI MARS hydrophone, 256 kHz, one 10-minute file per season (2024)
+  license: CC BY 4.0
+  s3:
+    endpoint: https://pacific-sound-256khz-2024.s3.us-west-2.amazonaws.com
+    selections:
+      - {prefix: 01/MARS_20240115_, pattern: '\.wav$', count: 1}
+      - {prefix: 04/MARS_20240415_, pattern: '\.wav$', count: 1}
+      - {prefix: 07/MARS_20240715_, pattern: '\.wav$', count: 1}
+      - {prefix: 09/MARS_20240915_, pattern: '\.wav$', count: 1}
+  max_bytes: 3000000000

@@ -1,0 +1,21 @@
+# data never enters git (see CLAUDE.md)
+data/
+mlruns/
+*.raw
+*.wav
+*.zip
+*.parquet
+*.onnx
+*.pt
+*.ckpt
+# python
+__pycache__/
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+# build
+edge/build/
+# local-only files
+Job Posting.docx
+~$*
