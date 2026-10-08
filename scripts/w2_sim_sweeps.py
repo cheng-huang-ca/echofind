@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parent))
-from w2_common import C, INK2, OUT, savefig, setup_style, write_meta  # noqa: E402
+from w2_common import INK2, OUT, C, savefig, setup_style, write_meta  # noqa: E402
 
 from echofind.dsp.cfar import CFARConfig, cfar_detect  # noqa: E402
 from echofind.dsp.frontend import FrontEndConfig, demodulate, process_iq  # noqa: E402
