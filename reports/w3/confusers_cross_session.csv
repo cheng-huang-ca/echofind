@@ -1,0 +1,25 @@
+cls,candidates,false_alarms,fa_rate,rung
+background,100462,4,0.0000,R0
+ball,5707,118,0.0207,R0
+circle cage,1089,0,0.0000,R0
+cube,2751,165,0.0600,R0
+cylinder,551,2,0.0036,R0
+metal bucket,632,0,0.0000,R0
+square cage,1530,12,0.0078,R0
+tyre,2512,16,0.0064,R0
+background,100462,3,0.0000,R1
+ball,5707,217,0.0380,R1
+circle cage,1089,9,0.0083,R1
+cube,2751,10,0.0036,R1
+cylinder,551,0,0.0000,R1
+metal bucket,632,0,0.0000,R1
+square cage,1530,0,0.0000,R1
+tyre,2512,81,0.0322,R1
+background,100462,73,0.0007,R2
+ball,5707,38,0.0067,R2
+circle cage,1089,28,0.0257,R2
+cube,2751,18,0.0065,R2
+cylinder,551,12,0.0218,R2
+metal bucket,632,1,0.0016,R2
+square cage,1530,13,0.0085,R2
+tyre,2512,46,0.0183,R2

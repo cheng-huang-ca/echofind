@@ -127,7 +127,7 @@ def summarise(split, fold, rung, ob_te, ca_te, s, p, thr_c, frames_te, boot):
     # realised performance with each candidate's own fold threshold
     passed = s >= thr_c
     found = pd.Series(passed).groupby(ca_te.obj_idx.to_numpy()).any()
-    found_o = ob_te.obj_idx.map(found).fillna(False).to_numpy()
+    found_o = ob_te.obj_idx.map(found).fillna(False).to_numpy().astype(bool)
     n_frames = len(frames_te)
     fa_real = float(passed[neg].sum() / n_frames)
     rec_real = float(found_o.mean()) if len(o) else np.nan
@@ -180,7 +180,8 @@ def main() -> None:
     if args.rungs:
         run_specs = {k: [r for r in v if r in args.rungs] for k, v in run_specs.items()}
 
-    mlflow.set_tracking_uri((ROOT / "mlruns").as_uri())
+    (ROOT / "mlruns").mkdir(exist_ok=True)
+    mlflow.set_tracking_uri(f"sqlite:///{(ROOT / 'mlruns' / 'mlflow.db').as_posix()}")
     mlflow.set_experiment("w3-ladder")
     meta = write_meta("ladder", {"fapf": FAPF, "boot": args.boot, "seed": SEED,
                                  "body_groups": BODY_GROUPS, "run_specs": run_specs})

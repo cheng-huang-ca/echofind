@@ -1,0 +1,4 @@
+rung,fapf_transfer,frames,threshold,fa_background,fa_ball,fa_circle cage,fa_cube,fa_cylinder,fa_metal bucket,fa_plane,fa_rov,fa_tyre
+R0,0.0204,2251,31.5113,39,0,0,2,0,0,1,4,0
+R1,0.0164,2251,-0.2037,31,0,0,4,0,0,0,2,0
+R2,0.0595,2251,-0.0852,70,0,0,0,0,0,60,3,1

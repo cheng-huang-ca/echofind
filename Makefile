@@ -3,7 +3,7 @@
 PY := uv run python
 ONLY ?=
 
-.PHONY: setup data data-dry test lint check atlas
+.PHONY: setup data data-dry test lint check atlas ladder
 
 setup:            ## install the core package plus dev tools
 	uv sync --group dev
@@ -27,3 +27,9 @@ atlas:            ## W1 signal atlas from NOAA and MBARI (needs `make data ONLY=
 	$(PY) scripts/w1_noaa.py
 	$(PY) scripts/w1_mbari.py
 	$(PY) scripts/w1_figures.py
+
+ladder:           ## W3 rungs R0-R2 on UATD (needs `make data ONLY="uatd"`; about 20 min on 10 cores)
+	$(PY) scripts/w3_candidates.py
+	$(PY) scripts/w3_ladder.py
+	$(PY) scripts/w3_report.py
+	$(PY) scripts/w3_bath_legs.py

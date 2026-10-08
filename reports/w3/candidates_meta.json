@@ -1,6 +1,6 @@
 {
   "script": "candidates",
-  "git_commit": "e7954cb744308cb471f64202ed2f26e2cca5c32f",
+  "git_commit": "d527a8828ceee3408003b35e1a64685fb83c722e",
   "data_manifest": "9784aec034bc1d88",
   "config": {
     "proposal": {
@@ -36,6 +36,6 @@
       "square cage": 0.9886,
       "tyre": 0.9737
     },
-    "seconds": 513.6
+    "seconds": 486.3
   }
 }
