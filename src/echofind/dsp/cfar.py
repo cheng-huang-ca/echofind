@@ -15,6 +15,13 @@ E[exp(-t max)] + E[exp(-t min)] = 2 E[exp(-t S)]. OS follows Rohling (1983).
 For a Swerling-1 target of mean SNR S in the CUT, the CUT is exponential with mean 1 + S, so
 Pd(S) = Pfa evaluated at the scale factor divided by (1 + S).
 
+Oversampled input: when the matched-filter output has m samples per resolution cell, adjacent
+cells are correlated and a contiguous window of N holds only about N/m independent ones, so the
+closed forms above under-set the threshold (Pfa 4-6x too high at m = 4). With `stride = m` the
+reference cells are taken every m samples (still N of them, spanning about N resolution cells),
+which keeps them nearly independent and the closed forms valid, while every sample is still
+tested; see reports/decisions/103-cfar-strided-reference.md.
+
 Cells whose full reference window does not fit inside the profile get a NaN threshold and are
 never detections.
 """
@@ -38,6 +45,7 @@ class CFARConfig:
     n_guard: int = 2         # G, guard cells per side
     pfa: float = 1e-4
     k: int | None = None     # OS rank; default 3N/4
+    stride: int = 1          # spacing of reference cells (set to samples per resolution cell)
 
     def __post_init__(self):
         if self.kind not in KINDS:
@@ -48,6 +56,7 @@ class CFARConfig:
     @property
     def os_rank(self) -> int:
         return self.k if self.k is not None else int(round(0.75 * self.n_ref))
+
 
 
 # ---------------------------------------------------------------- false-alarm closed forms
@@ -104,32 +113,46 @@ def pd_swerling1(cfg: CFARConfig, snr_linear: np.ndarray | float) -> np.ndarray:
 
 
 # ---------------------------------------------------------------- detectors
-def _sums(p: np.ndarray, n: int, g: int):
-    """Lag (before) and lead (after) window sums for every cell; NaN where they do not fit."""
+def _offsets(n: int, g: int, m: int) -> np.ndarray:
+    """Offsets of the lag-side reference cells (positive numbers; lead side is the mirror)."""
+    return g + 1 + m * np.arange(n)
+
+
+def _reach(n: int, g: int, m: int) -> int:
+    return int(_offsets(n, g, m)[-1])
+
+
+def _sums(p: np.ndarray, n: int, g: int, m: int = 1):
+    """Lag (before) and lead (after) reference sums for every cell; NaN where they do not fit."""
     L = p.shape[-1]
-    cs = np.concatenate([np.zeros(p.shape[:-1] + (1,)), np.cumsum(p, axis=-1)], axis=-1)
-    i = np.arange(L)
-    valid = (i - g - n >= 0) & (i + g + n + 1 <= L)
-    iv = i[valid]
     lag = np.full(p.shape, np.nan)
     lead = np.full(p.shape, np.nan)
-    lag[..., valid] = cs[..., iv - g] - cs[..., iv - g - n]
-    lead[..., valid] = cs[..., iv + g + n + 1] - cs[..., iv + g + 1]
+    R = _reach(n, g, m)
+    if L <= 2 * R:
+        return lag, lead
+    mid = slice(R, L - R)
+    lag[..., mid] = 0.0
+    lead[..., mid] = 0.0
+    for o in _offsets(n, g, m):
+        lag[..., mid] += p[..., R - o : L - R - o]
+        lead[..., mid] += p[..., R + o : L - R + o]
     return lag, lead
 
 
-def _os_stat(p: np.ndarray, n: int, g: int, k: int) -> np.ndarray:
+def _os_stat(p: np.ndarray, n: int, g: int, k: int, m: int = 1) -> np.ndarray:
     L = p.shape[-1]
-    w = 2 * (n + g) + 1
+    R = _reach(n, g, m)
+    w = 2 * R + 1
     out = np.full(p.shape, np.nan)
     if L < w:
         return out
-    keep = np.r_[0:n, n + 2 * g + 1 : w]
+    off = _offsets(n, g, m)
+    keep = np.r_[R - off[::-1], R + off]
     flat = p.reshape(-1, L)
     out_flat = out.reshape(-1, L)
     for row in range(flat.shape[0]):
         win = sliding_window_view(flat[row], w)[:, keep]
-        out_flat[row, n + g : L - n - g] = np.partition(win, k - 1, axis=-1)[:, k - 1]
+        out_flat[row, R : L - R] = np.partition(win, k - 1, axis=-1)[:, k - 1]
     return out
 
 
@@ -139,8 +162,8 @@ def cfar_threshold(power: np.ndarray, cfg: CFARConfig) -> np.ndarray:
     n, g = cfg.n_ref // 2, cfg.n_guard
     s = scale_factor(cfg)
     if cfg.kind == "os":
-        return s * _os_stat(p, n, g, cfg.os_rank)
-    lag, lead = _sums(p, n, g)
+        return s * _os_stat(p, n, g, cfg.os_rank, cfg.stride)
+    lag, lead = _sums(p, n, g, cfg.stride)
     if cfg.kind == "ca":
         return s * (lag + lead) / cfg.n_ref
     if cfg.kind == "go":

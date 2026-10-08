@@ -119,3 +119,23 @@ def test_go_cfar_limits_false_alarms_at_clutter_edge():
         excess[kind] = det[:, near].mean() / pfa
     assert excess["ca"] > 5
     assert excess["go"] < excess["ca"] / 3
+
+
+@pytest.mark.parametrize("kind", ["ca", "go", "os"])
+def test_strided_reference_holds_pfa_on_oversampled_mf_output(kind):
+    """Matched-filter output sampled at 4B has correlated neighbours: a contiguous window holds
+    only about N/4 independent cells and Pfa rises several-fold. Reference cells taken every 4
+    samples restore the closed-form Pfa (within 30%)."""
+    from echofind.dsp.matched_filter import matched_filter
+    from echofind.dsp.waveforms import lfm_pulse
+
+    rng = np.random.default_rng(14)
+    rep = lfm_pulse(20e3, 1e-3, 80e3)
+    x = (rng.standard_normal((400, 4096 + 80)) + 1j * rng.standard_normal((400, 4096 + 80)))
+    p = np.abs(matched_filter(x / np.sqrt(2), rep)[:, :4096]) ** 2
+    rates = {}
+    for stride in (1, 4):
+        det, thr = cfar_detect(p, CFARConfig(kind, n_ref=32, n_guard=4, pfa=1e-3, stride=stride))
+        rates[stride] = det.sum() / np.isfinite(thr).sum()
+    assert rates[1] > 1.8e-3
+    assert rates[4] == pytest.approx(1e-3, rel=0.3)
