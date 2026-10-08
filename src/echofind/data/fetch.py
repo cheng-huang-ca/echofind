@@ -65,21 +65,32 @@ def list_s3(endpoint: str, prefix: str):
 
 
 def select_s3(source: str, spec: dict, lister=list_s3) -> list[Item]:
-    """Resolve S3 selections to items: first `count` keys per prefix whose basename matches."""
+    """Resolve S3 selections to items: `count` keys per prefix whose basename matches.
+
+    By default the first `count` matches in key order are taken. With `spread: true` the picks
+    are evenly spaced over all matches, so a cruise is sampled end to end rather than only its
+    first (often dockside) minutes.
+    """
     endpoint = spec["endpoint"]
     items: list[Item] = []
     for sel in spec["selections"]:
         pattern = re.compile(sel["pattern"])
-        found = 0
+        count = sel["count"]
+        matches: list[tuple[str, int]] = []
         for key, size in lister(endpoint, sel["prefix"]):
             base = key.rsplit("/", 1)[-1]
             if pattern.search(base):
-                items.append(Item(source, f"{endpoint}/{urllib.parse.quote(key)}", base, size))
-                found += 1
-                if found >= sel["count"]:
+                matches.append((key, size))
+                if not sel.get("spread") and len(matches) >= count:
                     break
-        if found < sel["count"]:
-            print(f"  ! {source}: only {found}/{sel['count']} matches under {sel['prefix']}")
+        if sel.get("spread") and len(matches) > count:
+            step = len(matches) / count
+            matches = [matches[int(step * (i + 0.5))] for i in range(count)]
+        for key, size in matches[:count]:
+            base = key.rsplit("/", 1)[-1]
+            items.append(Item(source, f"{endpoint}/{urllib.parse.quote(key)}", base, size))
+        if len(matches) < count:
+            print(f"  ! {source}: only {len(matches)}/{count} matches under {sel['prefix']}")
     return items
 
 
