@@ -51,8 +51,9 @@ passband ─► band-pass fc±0.6B ─► IQ demod ─► matched filter ─► 
    Pd 0.75 while CA drops to 0.59 and GO to 0.52. Default: OS, which handles adjacent highlights
    and debris; GO is the alternative at bottom transitions (decision 105). In K clutter whose
    texture is patchy on the scale of the window, CFAR re-normalises and holds Pfa. Spiky
-   clutter at the cell scale breaks every exponential-model CFAR (28–47× at ν = 0.5), so a
-   K-aware threshold built on W1's fits is the next step.
+   clutter at the cell scale breaks every exponential-model CFAR (28–47× at ν = 0.5). W1's fits
+   (`reports/w1_clutter_fits.csv`, PR #1) put real near-bottom FM clutter at ν ≈ 0.4–0.7
+   (ES70, ES200), exactly that regime, so a K-aware threshold is required work, not optional.
 7. **CFAR finds echoes, not targets.** On HB2305 ES70 pings, OS-CFAR at Pfa 1e-4 returns about
    21 echoes per ping in the water column (plankton, fish). A 20 dB SNR gate leaves 4.5 and a
    25 dB gate leaves 0.8 (`w2_noaa_echogram.png`). The gate and the per-scan false-alarm budget
@@ -67,8 +68,13 @@ passband ─► band-pass fc±0.6B ─► IQ demod ─► matched filter ─► 
   findings above do not.
 - Compression gain on the real bottom echo is 3–5 dB, against 10–20 dB BT. The bottom is spread
   over many cells, and BT applies to point targets (verified in the simulator), not to the bottom.
-- MBARI noise is uncalibrated (dB re full scale), scaled to a stated floor; the bands stop at
-  128 kHz.
+- MBARI noise is uncalibrated (dB re full scale), scaled to a stated floor, and valid only below
+  about 100 kHz (W1). The 70–90 kHz band used here contains W1's persistent 86 kHz tone; the
+  matched filter spreads it, and the tails of three seasons stay exponential.
+- About 10–37% of ES70 pings carry interference from other sounders (W1), so some of the
+  water-column CFAR echoes may be interference rather than scatterers. W1's `impulse_mask` should
+  run before CFAR once PR #1 merges. W1's strongest-sample `bottom_index` suits down-looking ES
+  files; the persistence tracker here is for tilted handheld geometry (decision 104).
 - **Pending:** the UATD-beam and Bath ping-row range-profile bridge, and the beamwidth sweep for
   H9 (`sum_adjacent_beams` is ready). Both datasets are blocked by this environment's network
   policy; run them in W3 once fetched.

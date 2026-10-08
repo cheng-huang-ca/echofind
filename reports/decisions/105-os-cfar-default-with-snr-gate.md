@@ -24,5 +24,5 @@ choice. SO is never used.
 ## Consequences
 H3 as pre-registered ("GO or OS better than CA at clutter edges") is supported for GO and
 refuted for OS. Both outcomes are reported. A K-aware threshold, with its scale from W1's
-fitted ν, is open work: no exponential-model CFAR holds Pfa in spiky clutter at the
+fitted ν (0.4–0.7 near the bottom on HB2305 FM channels), is required next: no exponential-model CFAR holds Pfa in spiky clutter at the
 resolution scale (28–47× at ν = 0.5).
