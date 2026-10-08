@@ -48,21 +48,55 @@ def compute_sv(ed, waveform: str = "BB") -> xr.Dataset:
     return ds
 
 
-def bottom_index(sv: np.ndarray, r: np.ndarray, min_range: float = 5.0,
-                 threshold_db: float = -40.0) -> np.ndarray:
-    """Per-ping bottom sample: the first sample beyond min_range whose Sv exceeds threshold_db,
-    refined to the local maximum within the next 1 m. Returns -1 where nothing qualifies.
+def fm_bandwidth(ed) -> dict[str, float]:
+    """Transmit bandwidth (Hz) per FM channel label, from Beam_group1."""
+    b = ed["Sonar/Beam_group1"]
+    return {channel_label(str(c)): abs(float(b.transmit_frequency_stop.sel(channel=c).max())
+                                       - float(b.transmit_frequency_start.sel(channel=c).max()))
+            for c in b.channel.values}
 
-    `sv` is (ping, sample) in dB and `r` is the matching range in m (ping, sample) or (sample,).
+
+def impulse_mask(sv: np.ndarray, dr: float, threshold_db: float = 10.0,
+                 smooth_m: float = 0.5) -> np.ndarray:
+    """True where a ping exceeds both neighbouring pings by threshold_db at the same range
+    (impulsive noise test of Ryan et al. 2015, ICES J. Mar. Sci. 72(8)), after a smooth_m
+    running mean in range so a single fish or the seabed does not trip it."""
+    k = max(1, int(round(smooth_m / dr)))
+    lin = 10 ** (sv / 10)  # NaN (beyond a ping's record) stays NaN and never compares True
+    kern = np.ones(k) / k
+    sm = np.apply_along_axis(lambda x: np.convolve(x, kern, mode="same"), 1, lin)
+    sm_db = 10 * np.log10(sm)
+    mask = np.zeros(sv.shape, dtype=bool)
+    with np.errstate(invalid="ignore"):
+        mask[1:-1] = ((sm_db[1:-1] - sm_db[:-2] > threshold_db)
+                      & (sm_db[1:-1] - sm_db[2:] > threshold_db))
+    return mask
+
+
+def bottom_index(sv: np.ndarray, r: np.ndarray, min_range: float = 5.0,
+                 max_range: float = 150.0, max_jump_m: float = 1.5) -> np.ndarray:
+    """Per-ping bottom sample, robust to interference spikes and fish.
+
+    Pick the strongest sample between min_range and max_range in each ping (the cap keeps
+    TVG-amplified noise at long range from winning; HB2305 works on a 30-60 m shelf), take a
+    9-ping running median of those ranges as the seabed track, and re-pick any ping more than
+    max_jump_m off the track as its strongest sample within +-1 m of the track.
+    Returns -1 for an all-NaN ping.
+    `sv` is (ping, sample) in dB and `r` is the range in m, (sample,).
     """
-    r2 = np.broadcast_to(r, sv.shape)
-    ok = (r2 >= min_range) & (sv > threshold_db)
-    first = np.where(ok.any(axis=1), ok.argmax(axis=1), -1)
-    dr = np.nanmedian(np.diff(r2, axis=1))
-    win = max(1, int(round(1.0 / dr)))
-    out = first.copy()
-    for i, j in enumerate(first):
-        if j >= 0:
-            seg = np.nan_to_num(sv[i, j:j + win], nan=-999)
-            out[i] = j + int(np.argmax(seg))
-    return out
+    from scipy.ndimage import median_filter
+
+    r = np.asarray(r)
+    dr = float(np.nanmedian(np.diff(r)))
+    inside = (r >= min_range) & (r <= max_range)
+    x = np.where(np.isfinite(sv) & inside[None, :], sv, -np.inf)
+    ok = np.isfinite(x).any(axis=1)
+    pick = np.where(ok, np.argmax(x, axis=1), -1)
+    rp = np.where(pick >= 0, r[np.clip(pick, 0, None)], np.nan)
+    track = median_filter(np.nan_to_num(rp, nan=np.nanmedian(rp)), size=9, mode="nearest")
+    w = int(round(1.0 / dr))
+    for i in np.where(ok & (np.abs(rp - track) > max_jump_m))[0]:
+        c = int(np.searchsorted(r, track[i]))
+        lo, hi = max(c - w, 0), min(c + w, sv.shape[1])
+        pick[i] = lo + int(np.argmax(x[i, lo:hi]))
+    return pick

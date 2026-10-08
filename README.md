@@ -14,7 +14,7 @@ but 47% on unseen data (Nga et al., Remote Sensing 16(21):4036, 2024).
 | Workstream | State |
 | --- | --- |
 | S0 Scaffold: repo, CI, data fetcher | done |
-| W1 Signal atlas | not started |
+| W1 Signal atlas | NOAA and MBARI done ([atlas](reports/signal_atlas.md), [noise register](reports/noise_register.csv)); UATD and Bath pending network access |
 | W2 Physics and DSP front end | not started |
 | W3 Model ladder | not started |
 | W4 Field-honest evaluation | not started |

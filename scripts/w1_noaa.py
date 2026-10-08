@@ -10,6 +10,7 @@ Run: uv run python scripts/w1_noaa.py   (about 5 minutes, peak memory about 4 GB
 from __future__ import annotations
 
 import json
+import warnings
 from pathlib import Path
 
 import numpy as np
@@ -28,16 +29,13 @@ WINDOWS = {  # metres relative to the detected bottom (negative = above it), or 
     "seabed": ("bottom", 0.0, 1.0),
 }
 RNG = np.random.default_rng(0)
+warnings.filterwarnings("ignore", category=RuntimeWarning)  # all-NaN ranges beyond the record
 
 
-def resolution_m(ds, i: int) -> float:
-    """Range resolution: c/(2B) after pulse compression for FM, c*tau/2 for CW."""
-    if "transmit_frequency_start" in ds and str(ds.label.values[i]) != "ES18":
-        b = abs(float(ds.transmit_frequency_stop.isel(channel=i).max())
-                - float(ds.transmit_frequency_start.isel(channel=i).max()))
-        if b > 0:
-            return C / (2 * b)
-    return C * 1.024e-3 / 2
+def resolution_m(label: str, bandwidth: dict[str, float]) -> float:
+    """Range resolution: c/(2B) after pulse compression for FM, c*tau/2 for the CW channel."""
+    b = bandwidth.get(label, 0.0)
+    return C / (2 * b) if b > 0 else C * 1.024e-3 / 2
 
 
 def profile(r: np.ndarray, x_db: np.ndarray, step: float = 0.1, rmax: float | None = None):
@@ -94,6 +92,7 @@ def process(path: Path) -> list[dict]:
     lat = float(ed["Platform"].latitude.mean())
     lon = float(ed["Platform"].longitude.mean())
     stem = path.stem
+    bandwidth = ek80.fm_bandwidth(ed)
     rows = []
     for waveform in ("BB", "CW"):
         ds = ek80.compute_sv(ed, waveform)
@@ -108,7 +107,11 @@ def process(path: Path) -> list[dict]:
             last = int(np.where(valid)[0].max()) + 1
             sv, pre, r = sv[:, :last], pre[:, :last], r[:last]
             dr = float(np.nanmedian(np.diff(r)))
-            res = resolution_m(ds, i)
+            res = resolution_m(lab, bandwidth)
+            spikes = ek80.impulse_mask(sv, dr)
+            raw_sv = sv.copy()  # echograms keep the interference visible
+            sv = np.where(spikes, np.nan, sv)
+            pre = np.where(spikes, np.nan, pre)
             dec = max(1, int(round(res / dr)))
             bot = ek80.bottom_index(sv, r)
             rb = np.where(bot >= 0, r[np.clip(bot, 0, None)], np.nan)
@@ -119,9 +122,17 @@ def process(path: Path) -> list[dict]:
                                   if ds.tvg_db.isel(channel=i).ndim == 2
                                   else ds.tvg_db.isel(channel=i).values[None, :last])
             # Noise: median pre-TVG level over the farthest 15% of the recorded range, where
-            # bottom multiples have decayed (checked on the profiles in the atlas figure).
-            far = rp > 0.85 * np.nanmax(rp)
-            noise_db = float(np.nanmedian(pre_prof[far]))
+            # bottom multiples have decayed. Only the 500 m records qualify: in the 100 m ones
+            # the far range still holds the second and third seabed multiples.
+            far = r > 0.85 * np.nanmax(r)
+            long_record = np.nanmax(r) > 400
+            # Median over pings first: about one ping in four carries broadband interference
+            # that lifts the whole listening window by 15 to 70 dB.
+            noise_db = float(np.nanmedian(np.nanmedian(pre[:, far], axis=0))) \
+                if long_record else np.nan
+            ping_far = 10 * np.log10(np.nanmean(10 ** (pre[:, far] / 10), axis=1))
+            interf = float(np.mean(ping_far > np.nanmedian(ping_far) + 6)) \
+                if long_record else np.nan
             bot_pre = np.where(bot >= 0, pre[np.arange(len(bot)), np.clip(bot, 0, None)], np.nan)
             # Water column above the bottom, below the near field and surface bubbles.
             wc = (r >= 8.0) & (r <= np.nanmin(rb) - 3)
@@ -133,7 +144,7 @@ def process(path: Path) -> list[dict]:
             if stem.startswith("ComplexSamples-D20230724-T132531") or stem == "D20230726-T231007":
                 cut = r <= ECHO_MAX_M
                 step = max(1, int(round(0.05 / dr)))
-                eg = sv[:, cut]
+                eg = raw_sv[:, cut]
                 n = eg.shape[1] // step * step
                 eg = 10 * np.log10(np.nanmean(10 ** (eg[:, :n] / 10)
                                               .reshape(eg.shape[0], -1, step), axis=2))
@@ -152,6 +163,8 @@ def process(path: Path) -> list[dict]:
                 "max_range_m": float(np.nanmax(r)), "sample_m": dr, "resolution_m": res,
                 "bottom_range_m": float(np.nanmedian(rb)),
                 "bottom_found": float(np.mean(bot >= 0)),
+                "impulse_frac": float(spikes.mean()),
+                "interference_ping_frac": interf,
                 "bottom_sv_db": float(10 * np.log10(np.nanmean(10 ** (bpeak / 10)))),
                 "bottom_sv_std_db": float(np.nanstd(bpeak)),
                 "noise_pre_tvg_db": noise_db,

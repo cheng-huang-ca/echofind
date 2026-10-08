@@ -41,5 +41,6 @@ About 4 vCPUs, 16 GB RAM, 30 GB disk, x86_64, no GPU.
   Only the 990 kHz data was used in the paper; 450 kHz is included too. The `8_apr_2022` directory
   was not used in the paper. W3 starts with a written labelling protocol.
 - UATD: BMP frames with XML boxes; 720 kHz and 1200 kHz; lake (Maoming) and sea (Dalian) sites.
-- NOAA HB2305: EK80 files; `ComplexSamples-*` are broadband complex echoes, `D*-T*.raw` are CW.
+- NOAA HB2305: every EK80 file has complex FM samples for ES38/ES70/ES200 (Beam_group1) plus ES18 CW
+  (Beam_group2). ES70 carries interference from other ship sounders; use `ek80.impulse_mask`.
 - SCTD and the FLS victim set have no stated license: evaluate only, never redistribute, never show victim images.
