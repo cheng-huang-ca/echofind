@@ -3,7 +3,7 @@
 PY := uv run python
 ONLY ?=
 
-.PHONY: setup data data-dry test lint check
+.PHONY: setup data data-dry test lint check atlas
 
 setup:            ## install the core package plus dev tools
 	uv sync --group dev
@@ -21,3 +21,9 @@ lint:
 	uv run ruff check src tests
 
 check: lint test
+
+atlas:            ## W1 signal atlas from NOAA and MBARI (needs `make data ONLY="noaa mbari"`, echopype)
+	uv pip install "echopype>=0.9"
+	$(PY) scripts/w1_noaa.py
+	$(PY) scripts/w1_mbari.py
+	$(PY) scripts/w1_figures.py
