@@ -3,7 +3,7 @@
 PY := uv run python
 ONLY ?=
 
-.PHONY: setup data data-dry test lint check atlas ladder eval edge strategy
+.PHONY: setup data data-dry test lint check atlas ladder eval edge strategy deep
 
 setup:            ## install the core package plus dev tools
 	uv sync --group dev
@@ -49,3 +49,10 @@ edge:             ## W5 C++ edge build, parity tests and benchmark (needs `make 
 
 strategy:         ## W6 coverage audit, ICC and sample size, field design (needs `make ladder`)
 	$(PY) scripts/w6_strategy.py
+
+deep:             ## S4 deep rungs R3/R4 on CPU (needs `make ladder` and `uv sync --extra dl`; hours)
+	$(PY) scripts/s4_snippets.py
+	$(PY) scripts/s4_resnet_features.py
+	$(PY) scripts/s4_ladder.py
+	$(PY) scripts/s4_int8.py --rung R3b
+	$(PY) scripts/s4_report.py

@@ -1,0 +1,12 @@
+{
+  "desc": "2-D CNN on snippet (~110k params)",
+  "max_neg": 40000,
+  "seed": 0,
+  "epochs": 12,
+  "batch": 256,
+  "lr": 0.002,
+  "weight_decay": 0.0001,
+  "patience": 4,
+  "max_minutes": 28.0,
+  "n_params": 113457
+}

@@ -1,0 +1,5 @@
+rung,recall_at_op,recall_lo,recall_hi,pr_auc
+R3b fp32,0.6102,0.4469,0.8287,0.7041
+R3b int8,0.5927,0.4411,0.7989,0.6926
+int8 - fp32,-0.0174,-0.0357,0.0024,
+speed-up (fp32 p50 / int8 p50),0.9991,,,

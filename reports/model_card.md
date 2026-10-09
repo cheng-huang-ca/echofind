@@ -42,6 +42,17 @@ Calibration: ECE 0.010 over all candidates, but 0.09 (new session) to 0.43 (new 
 among candidates with p ≥ 0.05. Probabilities are not reliable under shift; treat the score as
 a ranking.
 
+## Candidate successor: R3b 2-D CNN (S4, not yet kept)
+
+A 113k-parameter CNN on 64 × 32 snippets of the same normalised grid
+([s4_deep_rungs.md](s4_deep_rungs.md)) gives cross-session recall 0.61 [0.45, 0.83] and
+720 → 1,200 kHz recall 0.56 [0.45, 0.77], where R2 gives 0.41 and 0.08. At 1,200 → 720 kHz it
+gives 0.31 [0.00, 0.46], and the paired gain over R2 includes zero, so it does not meet the
+pre-registered keep rule (decision 602). Its transferred thresholds miss the false-alarm
+target as R2's do (0.095 at new sessions, 0.18 at sea), so the calibration requirement below
+applies to it too. It costs 8.4 ms per ping for 20 candidates on one x86 core, against 0.2 ms
+for R2. int8 cuts its size 3.3× at −0.017 recall, with no speed gain on this CPU.
+
 ## Operating requirements
 1. **Calibrate at every new site and frequency.** Record 50–100 body-free frames, then set the
    threshold to the target false-alarm rate on them (decision 303). Without this step the
