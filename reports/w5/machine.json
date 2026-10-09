@@ -1,0 +1,9 @@
+{
+  "platform": "Windows-11-10.0.26300-SP0",
+  "machine": "AMD64",
+  "python": "3.12.13",
+  "Name": "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz",
+  "NumberOfCores": 6,
+  "NumberOfLogicalProcessors": 12,
+  "MaxClockSpeed": 2592
+}

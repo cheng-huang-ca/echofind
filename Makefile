@@ -3,7 +3,7 @@
 PY := uv run python
 ONLY ?=
 
-.PHONY: setup data data-dry test lint check atlas ladder
+.PHONY: setup data data-dry test lint check atlas ladder edge
 
 setup:            ## install the core package plus dev tools
 	uv sync --group dev
@@ -33,3 +33,11 @@ ladder:           ## W3 rungs R0-R2 on UATD (needs `make data ONLY="uatd"`; abou
 	$(PY) scripts/w3_ladder.py
 	$(PY) scripts/w3_report.py
 	$(PY) scripts/w3_bath_legs.py
+
+edge:             ## W5 C++ edge build, parity tests and benchmark (needs `make ladder` first)
+	$(PY) scripts/w5_export.py
+	cmake -S edge -B edge/build -DCMAKE_BUILD_TYPE=Release
+	cmake --build edge/build
+	ctest --test-dir edge/build --output-on-failure
+	uv run pytest tests/test_edge_parity.py
+	$(PY) scripts/w5_bench.py
