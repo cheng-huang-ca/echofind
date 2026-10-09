@@ -1,0 +1,4 @@
+rung,recall_at_op,recall_lo,recall_hi,pr_auc,decision_flip_rate,max_abs_score_diff
+R2 float64,0.41213,0.31645,0.55938,0.54119,,
+R2 float32,0.41004,0.31334,0.55863,0.54018,,
+float32 - float64,-0.00209,-0.00727,0.00536,,0.00011,1.11951

@@ -1,0 +1,10 @@
+demod_80k                    demod  f64 5.09e-15  f32 1.08e-07  ok
+mf_80k                       mf     f64 4.81e-16  f32 8.12e-08  ok
+cfar_ca_stride1              cfar   f64 0.00e+00  f32 1.31e-07  ok
+cfar_ca_stride4              cfar   f64 0.00e+00  f32 2.22e-07  ok
+cfar_go_stride1              cfar   f64 7.41e-15  f32 1.38e-07  ok
+cfar_go_stride4              cfar   f64 7.44e-15  f32 3.07e-07  ok
+cfar_os_stride1              cfar   f64 1.90e-15  f32 8.13e-08  ok
+cfar_os_stride4              cfar   f64 1.86e-15  f32 7.21e-08  ok
+tvg_80k                      tvg    f64 1.88e-11  f32 6.75e-08  ok
+9/9 cases pass
