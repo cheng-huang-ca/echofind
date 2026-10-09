@@ -1,0 +1,13 @@
+leg_id,verdict,x0_m,x1_m,y0_m,y1_m,note
+L136,target_like,3.6,4.3,5.1,6.1,highlight with oval shadow; same signature as canal target boxes
+L150,target_like,4.4,5.2,11.8,13.2,highlight with oval shadow; same signature as canal target boxes
+L155,target_free,,,,,short leg; nothing target-like
+L167,target_like,7.3,8.6,3.0,4.0,highlight with shadow; similar to canal target boxes
+L187,unclear,,,,,large dark patch at 4.9-6.0 m/4.0-6.5 m; probably vegetation
+L197,target_like,2.4,3.1,6.3,7.4,highlight with elongated shadow near nadir
+L203,target_like,8.6,9.3,0.6,1.0,bright return with a small shadow at the start of the leg
+L207,target_free,,,,,bank and rubble; nothing target-like
+L208,target_free,,,,,smooth floor
+L211,target_free,,,,,smooth floor
+L212,target_free,,,,,bank edge; small dark mark at 11-11.3 m/6.1-6.5 m without highlight
+L214,target_free,,,,,smooth floor
