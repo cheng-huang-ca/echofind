@@ -1,6 +1,8 @@
 # Bath side-scan: labelling protocol (W3)
 
-Status: step 1 done (leg-level table); steps 2 to 4 are not done yet and block any Bath number.
+Status: step 1 done; steps 2–3 done by one reviewer (decision 701): Underfall Yard boxes are
+usable (32 of 37 legs graded A/B), Bathampton canal boxes are not. Step 4 (second reviewer,
+kappa) is still needed, and it blocks any Bath number.
 Owner: W3. Related: [decision 202](decisions/202-uatd-primary-bath-protocol.md), `scripts/w3_bath_legs.py`,
 [`w3/bath_legs.csv`](w3/bath_legs.csv), [`w3/bath_legs_summary.csv`](w3/bath_legs_summary.csv).
 

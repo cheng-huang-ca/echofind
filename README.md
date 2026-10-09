@@ -51,7 +51,7 @@ Body recall at 0.05 false alarms per frame, with 95% cluster-bootstrap intervals
 | S0 Scaffold: repo, CI, data fetcher | done |
 | W1 Signal atlas | NOAA and MBARI done ([atlas](reports/signal_atlas.md), [noise register](reports/noise_register.csv)); UATD analysed in W3–W4; image sections of the atlas not written |
 | W2 Physics and DSP front end | done: `echofind.dsp` + `echofind.sim`, tests against closed forms, Pd-vs-SNR, [design note](reports/w2_frontend_design.md) |
-| W3 Model ladder | R0–R2 on UATD ([results](reports/w3_ladder.md)); deep rungs R3–R4 in S4 ([report](reports/s4_deep_rungs.md)); R5 multi-look not testable on UATD; Bath [labelling protocol](reports/w3_bath_labelling_protocol.md) written, box labels pending |
+| W3 Model ladder | R0–R2 on UATD ([results](reports/w3_ladder.md)); deep rungs R3–R4 in S4 ([report](reports/s4_deep_rungs.md)); R5 multi-look not testable on UATD; Bath [labelling protocol](reports/w3_bath_labelling_protocol.md): first review pass done ([decision 701](reports/decisions/701-bath-first-review-pass.md)), Underfall Yard boxes usable, canal not; second reviewer pending |
 | W4 Field-honest evaluation | done on UATD ([report](reports/w4_generalization.md), [model card](reports/model_card.md)): mission cost, recalibration, OOD score, input QA with fault injection, FMEA-lite |
 | W5 Edge deployment | done on x86 ([report](reports/w5_edge.md), [edge/](edge/README.md)): parity ≤ 3.1e-7 (float32), 16 ms p95 at 200 kHz; Raspberry Pi timing pending |
 | W6 Data strategy | done ([memo](reports/w6_collection_memo.md), [metadata schema](configs/field_metadata.schema.json)) |
@@ -94,7 +94,7 @@ Data is downloaded, never committed. See `configs/data.yaml` for exact files and
 - One mannequin in one lake (16 sessions).
 - No bodies beyond 12 m.
 - The two frequencies come from different sessions.
-- No Bath result yet.
+- No Bath result yet: one review pass, and the canal labels are unreliable (decision 701).
 - One seed per CNN fold.
 - ARM timing is not measured.
 
