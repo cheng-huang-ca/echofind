@@ -1,0 +1,9 @@
+{
+  "icc": 0.12058339605439441,
+  "icc_lo": 0.017591521382493723,
+  "icc_hi": 0.23668896204565534,
+  "sessions": 16,
+  "objects": 1434,
+  "recall": 0.4121338912133891,
+  "note": "UATD session = one range setting at one sound speed; frames are looks"
+}

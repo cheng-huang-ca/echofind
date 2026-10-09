@@ -3,7 +3,7 @@
 PY := uv run python
 ONLY ?=
 
-.PHONY: setup data data-dry test lint check atlas ladder eval
+.PHONY: setup data data-dry test lint check atlas ladder eval strategy
 
 setup:            ## install the core package plus dev tools
 	uv sync --group dev
@@ -38,3 +38,6 @@ eval:             ## W4 field-honest evaluation (needs `make ladder` first)
 	$(PY) scripts/w4_qa.py
 	$(PY) scripts/w4_eval.py
 	$(PY) scripts/w4_faults.py
+
+strategy:         ## W6 coverage audit, ICC and sample size, field design (needs `make ladder`)
+	$(PY) scripts/w6_strategy.py

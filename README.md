@@ -19,7 +19,7 @@ but 47% on unseen data (Nga et al., Remote Sensing 16(21):4036, 2024).
 | W3 Model ladder | R0–R2 checkpoint on UATD ([results](reports/w3_ladder.md)): cross-session recall 0.41 at 0.05 FA/frame for R2; every rung fails across frequency; Bath [labelling protocol](reports/w3_bath_labelling_protocol.md) written, box labels pending; R3–R5 next (S4) |
 | W4 Field-honest evaluation | done on UATD ([report](reports/w4_generalization.md), [model card](reports/model_card.md)): mission-cost operating point, threshold recalibration from body-free frames, OOD rescan score, input QA with fault injection, FMEA-lite; Bath leave-one-site-out and external sets pending labels |
 | W5 Edge deployment | not started |
-| W6 Data strategy memo | not started |
+| W6 Data strategy memo | done ([memo](reports/w6_collection_memo.md), [metadata schema](configs/field_metadata.schema.json)): coverage audit, 8-day blocked trial (144 placements, both frequencies paired), sample size with measured ICC 0.12 and planning 0.5, labelling/QA, pre-registered sim-to-real test |
 
 ## Reproduce
 
