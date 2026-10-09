@@ -1,0 +1,3 @@
+split,test_body_candidates,nn_dist_median,nn_dist_p10,share_within_0.5
+random,2987,2.3687,1.5479,0.0013
+cross-session,2987,2.9433,2.1362,0.0000

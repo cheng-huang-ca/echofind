@@ -1,0 +1,19 @@
+{
+  "frames": 9200,
+  "objects": 14639,
+  "candidates": 211317,
+  "candidates_per_frame": 22.97,
+  "objects_proposed_by_class": {
+    "ball": 0.9757,
+    "circle cage": 0.9733,
+    "cube": 0.9752,
+    "cylinder": 0.9772,
+    "human body": 0.9972,
+    "metal bucket": 0.9897,
+    "plane": 0.9737,
+    "rov": 0.984,
+    "square cage": 0.9886,
+    "tyre": 0.9737
+  },
+  "seconds": 486.3
+}
