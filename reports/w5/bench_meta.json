@@ -1,0 +1,7 @@
+{
+  "script": "w5_bench",
+  "git_commit": "e5bc3490fcdcee31a1052a33379a11cb77def023",
+  "budget_ms": 67.56756756756756,
+  "pings": 500,
+  "core": 2
+}

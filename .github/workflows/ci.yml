@@ -11,3 +11,19 @@ jobs:
       - run: uv sync --group dev
       - run: uv run ruff check src tests
       - run: uv run pytest
+  edge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --group dev
+      - name: Build the C++ edge library, CLI and pybind11 module
+        run: |
+          PY=$(uv run python -c "import sys; print(sys.executable)")
+          PB=$(uv run --with pybind11 python -m pybind11 --cmakedir)
+          cmake -S edge -B edge/build -DCMAKE_BUILD_TYPE=Release -DEF_PYBIND=ON -DPython_EXECUTABLE="$PY" -Dpybind11_DIR="$PB"
+          cmake --build edge/build -j
+      - name: Golden vectors (C++ only)
+        run: ctest --test-dir edge/build --output-on-failure
+      - name: Parity with Python (ctypes and pybind11)
+        run: uv run pytest tests/test_edge_parity.py -v
