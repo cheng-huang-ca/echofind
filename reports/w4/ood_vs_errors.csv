@@ -1,0 +1,9 @@
+eval,frames,n_frames,bodies,recall_transfer,fapf_transfer,share_candidates_flagged
+720k->1200k,flagged,580,145,0.0138,0.0069,
+720k->1200k,not flagged,4083,788,0.0241,0.0076,
+1200k->720k,flagged,240,55,0.0000,0.0000,
+1200k->720k,not flagged,2046,446,0.0022,0.0005,
+lake->sea R2 false alarms,class plane,60,0,,,0.7833
+lake->sea R2 false alarms,class background,70,0,,,0.3286
+lake->sea R2 false alarms,class rov,3,0,,,0.0000
+lake->sea R2 false alarms,class all,134,0,,,0.5224

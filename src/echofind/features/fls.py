@@ -267,7 +267,8 @@ def features(g: Grid, cands: pd.DataFrame, ring: int = 6, ring2: int = 15) -> pd
         cw3, cw6 = _widths(prof_b, dx)
         padded = np.pad(qbox_db, 1, mode="edge")         # 1-cell-wide boxes have no gradient
         gy, gx = (d[1:-1, 1:-1] for d in np.gradient(padded))
-        hist, _ = np.histogram(qbox_db, bins=16)
+        hist, _ = (np.histogram(qbox_db, bins=16) if np.ptp(qbox_db) > 1e-6
+                   else (np.array([qbox_db.size]), None))   # a clipped, flat box
         pdist = hist[hist > 0] / hist.sum()
         cen = np.array([rr.mean(), bb.mean()])
         pk_off = np.linalg.norm((np.array([c.peak_r - c.r0, c.peak_b - c.b0]) - cen)
