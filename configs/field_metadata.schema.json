@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/cheng-huang-ca/echofind/configs/field_metadata.schema.json",
+  "title": "EchoFind field-collection session",
+  "description": "One field day at one site: environment, device, every placement and calibration sweep, and the labels made from the sonar data. Written for the W6 trial (reports/w6_collection_memo.md). Every gap found in W1-W5 maps to a required field here: frequency pairing, range, bottom, pose, clothing, tilt, body-free sweeps, check and re-search times.",
+  "type": "object",
+  "required": ["schema_version", "session_id", "site", "environment", "device", "crew", "placements"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "session_id": {"type": "string", "pattern": "^S[0-9]+D[0-9]+$", "description": "Site and day, e.g. S2D1"},
+    "site": {
+      "type": "object",
+      "required": ["site_id", "water_body", "lat", "lon", "bottom_type", "depth_m"],
+      "additionalProperties": false,
+      "properties": {
+        "site_id": {"type": "string"},
+        "water_body": {"enum": ["lake", "reservoir", "river", "canal", "harbour", "sea", "quarry"]},
+        "lat": {"type": "number", "minimum": -90, "maximum": 90},
+        "lon": {"type": "number", "minimum": -180, "maximum": 180},
+        "bottom_type": {"enum": ["mud", "sand", "gravel", "rock", "weed", "debris", "mixed"]},
+        "bottom_note": {"type": "string"},
+        "depth_m": {"type": "object", "required": ["min", "max"],
+                     "properties": {"min": {"type": "number", "minimum": 0}, "max": {"type": "number", "minimum": 0}}},
+        "current_m_s": {"type": "number", "minimum": 0},
+        "ice_cover": {"type": "boolean"}
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": ["temperature_c", "salinity_psu", "sound_speed_m_s", "sound_speed_source"],
+      "additionalProperties": false,
+      "properties": {
+        "temperature_c": {"type": "number", "minimum": -2, "maximum": 40},
+        "salinity_psu": {"type": "number", "minimum": 0, "maximum": 42},
+        "sound_speed_m_s": {"type": "number", "minimum": 1400, "maximum": 1600},
+        "sound_speed_source": {"enum": ["ctd_profile", "temperature_formula", "device_default"]},
+        "turbidity_ntu": {"type": "number", "minimum": 0},
+        "wind_m_s": {"type": "number", "minimum": 0},
+        "boat_traffic": {"enum": ["none", "light", "heavy"]},
+        "rain": {"type": "boolean"}
+      }
+    },
+    "device": {
+      "type": "object",
+      "required": ["model", "serial", "firmware", "frequencies_khz", "range_setting_m", "gain_mode", "raw_recording", "imu"],
+      "additionalProperties": false,
+      "properties": {
+        "model": {"type": "string"},
+        "serial": {"type": "string"},
+        "firmware": {"type": "string"},
+        "frequencies_khz": {"type": "array", "items": {"type": "number", "exclusiveMinimum": 0}, "minItems": 1,
+                             "description": "All frequencies recorded on every ping; two for a dual-frequency unit (W3/W4: bodies must be seen at both in the same session)"},
+        "range_setting_m": {"type": "number", "exclusiveMinimum": 0},
+        "gain_mode": {"enum": ["fixed", "auto"]},
+        "gain_db": {"type": "number"},
+        "raw_recording": {"const": true, "description": "Raw per-ping samples are stored, not only the display image"},
+        "imu": {"const": true, "description": "Tilt and heading logged per ping (FMEA: device tilt)"}
+      }
+    },
+    "crew": {
+      "type": "object",
+      "required": ["operator_id", "diver_or_camera"],
+      "properties": {
+        "operator_id": {"type": "string"},
+        "diver_or_camera": {"enum": ["diver", "drop_camera", "rov"]}
+      }
+    },
+    "placements": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/placement"}},
+    "labels": {"type": "array", "items": {"$ref": "#/$defs/label"}}
+  },
+  "$defs": {
+    "placement": {
+      "type": "object",
+      "required": ["placement_id", "kind", "slot", "start_utc", "end_utc", "passes"],
+      "additionalProperties": false,
+      "properties": {
+        "placement_id": {"type": "string", "pattern": "^S[0-9]+D[0-9]+-[0-9]{2}$"},
+        "kind": {"enum": ["body", "confuser", "empty_sweep"]},
+        "slot": {"type": "integer", "minimum": 1, "description": "Position in the randomised order of the day"},
+        "start_utc": {"type": "string", "format": "date-time"},
+        "end_utc": {"type": "string", "format": "date-time"},
+        "target": {"$ref": "#/$defs/target"},
+        "ground_truth": {"$ref": "#/$defs/ground_truth"},
+        "passes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/pass"}},
+        "check_time_s": {"type": "number", "minimum": 0, "description": "Measured time to verify an alarm here (mission-cost model, decision 301)"},
+        "notes": {"type": "string"}
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "empty_sweep"}}},
+         "then": {"not": {"required": ["target"]}},
+         "else": {"required": ["target", "ground_truth"]}}
+      ]
+    },
+    "target": {
+      "type": "object",
+      "required": ["type", "range_m"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {"enum": ["mannequin", "tissue_phantom", "cadaver", "tyre", "log", "rock_pile", "debris_bag", "other_confuser"]},
+        "proxy_spec": {"type": "string", "description": "Model, materials, air content, mass"},
+        "pose": {"enum": ["prone", "supine", "curled", "vertical"]},
+        "clothing": {"enum": ["none", "light", "heavy", "wetsuit"]},
+        "on_bottom": {"type": "boolean"},
+        "range_m": {"type": "number", "exclusiveMinimum": 0},
+        "depth_m": {"type": "number", "minimum": 0}
+      }
+    },
+    "ground_truth": {
+      "type": "object",
+      "required": ["method", "lat", "lon", "position_error_m", "confirmed_utc"],
+      "additionalProperties": false,
+      "properties": {
+        "method": {"enum": ["gps_buoy_and_diver", "gps_buoy_and_camera", "surveyed_line"]},
+        "lat": {"type": "number"},
+        "lon": {"type": "number"},
+        "position_error_m": {"type": "number", "minimum": 0},
+        "heading_deg": {"type": "number", "minimum": 0, "maximum": 360},
+        "confirmed_utc": {"type": "string", "format": "date-time"}
+      }
+    },
+    "pass": {
+      "type": "object",
+      "required": ["pass_id", "file", "sha256", "n_pings"],
+      "additionalProperties": false,
+      "properties": {
+        "pass_id": {"type": "integer", "minimum": 1},
+        "file": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "n_pings": {"type": "integer", "minimum": 1},
+        "operator_lat": {"type": "number"},
+        "operator_lon": {"type": "number"},
+        "qa": {"$ref": "#/$defs/qa"}
+      }
+    },
+    "qa": {
+      "type": "object",
+      "description": "Automatic checks (echofind.eval.qa) per pass: share of pings failing each check",
+      "properties": {
+        "saturation": {"type": "number", "minimum": 0, "maximum": 1},
+        "dropped_rows": {"type": "number", "minimum": 0, "maximum": 1},
+        "dead_beams": {"type": "number", "minimum": 0, "maximum": 1},
+        "low_signal": {"type": "number", "minimum": 0, "maximum": 1},
+        "tilt_out_of_range": {"type": "number", "minimum": 0, "maximum": 1},
+        "metadata_complete": {"type": "boolean"}
+      }
+    },
+    "label": {
+      "type": "object",
+      "required": ["placement_id", "pass_id", "labeller_id", "blind", "label", "confidence"],
+      "additionalProperties": false,
+      "properties": {
+        "placement_id": {"type": "string"},
+        "pass_id": {"type": "integer", "minimum": 1},
+        "labeller_id": {"type": "string"},
+        "blind": {"const": true, "description": "Labeller saw placement IDs, not the placement log"},
+        "label": {"enum": ["body", "not_body", "unsure", "unusable"]},
+        "ping_range": {"type": "array", "items": {"type": "integer"}, "minItems": 2, "maxItems": 2},
+        "range_m": {"type": "number", "minimum": 0},
+        "bearing_deg": {"type": "number"},
+        "confidence": {"enum": ["A", "B", "C"]},
+        "double_label_of": {"type": "string", "description": "labeller_id of the first label when this is the 10% double-label"},
+        "adjudicated_by": {"type": "string"}
+      }
+    }
+  }
+}

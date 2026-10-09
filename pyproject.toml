@@ -25,7 +25,11 @@ dl = ["torch>=2.3", "torchvision>=0.18", "timm>=1.0", "onnx>=1.16", "onnxruntime
 edge = ["pybind11>=2.12"]
 
 [dependency-groups]
-dev = ["pytest>=8", "ruff>=0.5"]
+dev = [
+    "jsonschema>=4.26.0",
+    "pytest>=8",
+    "ruff>=0.5",
+]
 
 [build-system]
 requires = ["hatchling"]

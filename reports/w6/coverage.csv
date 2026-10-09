@@ -1,0 +1,18 @@
+dimension,level,uatd_body_objects,bath_target_legs,status
+target,mannequin (one model),1434,73,"have, proxy only"
+target,real human body,0,0,none: ethics-approved cadaver or tissue phantom
+target,clothing / pose varied,0,0,not logged in either set
+site type,lake (fresh),1434,0,"have, one lake"
+site type,sea (salt),0,0,UATD sea frames hold no bodies
+site type,canal / harbour (fresh-brackish),0,73,"Bath, unboxed (protocol in reports/w3_bath_labelling_protocol.md)"
+site type,"river with current, ice, weed bed",0,0,none
+bottom,logged bottom type,0,0,neither set logs it
+depth,logged water depth,0,0,neither set logs it
+sensor,forward-looking 720 kHz,501,0,have
+sensor,"forward-looking 1,200 kHz",933,0,have
+sensor,side-scan 450 / 990 kHz,0,73,"Bath, unboxed"
+sensor,"AquaEye-like handheld, dual frequency, 1-D pings",0,0,none
+range,0-6 m,686,0,have
+range,6-12 m,745,0,have
+range,12-25 m,3,0,thin
+range,25-50 m,0,0,none

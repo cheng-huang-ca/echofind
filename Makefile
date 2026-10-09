@@ -3,7 +3,7 @@
 PY := uv run python
 ONLY ?=
 
-.PHONY: setup data data-dry test lint check atlas ladder eval edge
+.PHONY: setup data data-dry test lint check atlas ladder eval edge strategy
 
 setup:            ## install the core package plus dev tools
 	uv sync --group dev
@@ -46,3 +46,6 @@ edge:             ## W5 C++ edge build, parity tests and benchmark (needs `make 
 	ctest --test-dir edge/build --output-on-failure
 	uv run pytest tests/test_edge_parity.py
 	$(PY) scripts/w5_bench.py
+
+strategy:         ## W6 coverage audit, ICC and sample size, field design (needs `make ladder`)
+	$(PY) scripts/w6_strategy.py
