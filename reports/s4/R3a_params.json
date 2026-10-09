@@ -1,0 +1,12 @@
+{
+  "desc": "1-D CNN on range profile",
+  "max_neg": 40000,
+  "seed": 0,
+  "epochs": 15,
+  "batch": 512,
+  "lr": 0.002,
+  "weight_decay": 0.0001,
+  "patience": 4,
+  "max_minutes": 28.0,
+  "n_params": 25857
+}

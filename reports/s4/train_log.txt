@@ -1,0 +1,246 @@
+  R3a_cross_session_720k_r10 epoch 0: loss 0.7502 val AP 0.4355 (best 0.4355) 0.1 min
+  R3a_cross_session_720k_r10 epoch 1: loss 0.5330 val AP 0.6023 (best 0.6023) 0.3 min
+  R3a_cross_session_720k_r10 epoch 2: loss 0.4529 val AP 0.4562 (best 0.6023) 0.4 min
+  R3a_cross_session_720k_r10 epoch 3: loss 0.4457 val AP 0.4934 (best 0.6023) 0.6 min
+  R3a_cross_session_720k_r10 epoch 4: loss 0.3863 val AP 0.5092 (best 0.6023) 0.7 min
+  R3a_cross_session_720k_r10 epoch 5: loss 0.3673 val AP 0.5933 (best 0.6023) 0.8 min
+R3a cross-session 720k_r10: fit 41793 (1793 pos), test 18609, 1.5 min
+  R3a_cross_session_720k_r15 epoch 0: loss 0.7236 val AP 0.4213 (best 0.4213) 0.1 min
+  R3a_cross_session_720k_r15 epoch 1: loss 0.4660 val AP 0.4348 (best 0.4348) 0.3 min
+  R3a_cross_session_720k_r15 epoch 2: loss 0.3866 val AP 0.4367 (best 0.4367) 0.5 min
+  R3a_cross_session_720k_r15 epoch 3: loss 0.3373 val AP 0.4568 (best 0.4568) 0.6 min
+  R3a_cross_session_720k_r15 epoch 4: loss 0.3161 val AP 0.4810 (best 0.4810) 0.7 min
+  R3a_cross_session_720k_r15 epoch 5: loss 0.2659 val AP 0.4415 (best 0.4810) 0.9 min
+  R3a_cross_session_720k_r15 epoch 6: loss 0.2610 val AP 0.4820 (best 0.4820) 1.0 min
+  R3a_cross_session_720k_r15 epoch 7: loss 0.2243 val AP 0.4992 (best 0.4992) 1.1 min
+  R3a_cross_session_720k_r15 epoch 8: loss 0.2072 val AP 0.4133 (best 0.4992) 1.3 min
+  R3a_cross_session_720k_r15 epoch 9: loss 0.2085 val AP 0.4788 (best 0.4992) 1.4 min
+  R3a_cross_session_720k_r15 epoch 10: loss 0.1859 val AP 0.4842 (best 0.4992) 1.6 min
+  R3a_cross_session_720k_r15 epoch 11: loss 0.1681 val AP 0.5099 (best 0.5099) 1.7 min
+  R3a_cross_session_720k_r15 epoch 12: loss 0.1631 val AP 0.5207 (best 0.5207) 1.8 min
+  R3a_cross_session_720k_r15 epoch 13: loss 0.1566 val AP 0.5086 (best 0.5207) 2.0 min
+  R3a_cross_session_720k_r15 epoch 14: loss 0.1555 val AP 0.5057 (best 0.5207) 2.1 min
+R3a cross-session 720k_r15: fit 40869 (869 pos), test 18897, 2.7 min
+  R3a_cross_session_1200k_r10 epoch 0: loss 0.7217 val AP 0.3119 (best 0.3119) 0.1 min
+  R3a_cross_session_1200k_r10 epoch 1: loss 0.5234 val AP 0.3772 (best 0.3772) 0.2 min
+  R3a_cross_session_1200k_r10 epoch 2: loss 0.4659 val AP 0.4307 (best 0.4307) 0.4 min
+  R3a_cross_session_1200k_r10 epoch 3: loss 0.3938 val AP 0.4944 (best 0.4944) 0.5 min
+  R3a_cross_session_1200k_r10 epoch 4: loss 0.3787 val AP 0.5141 (best 0.5141) 0.6 min
+  R3a_cross_session_1200k_r10 epoch 5: loss 0.3389 val AP 0.4987 (best 0.5141) 0.7 min
+  R3a_cross_session_1200k_r10 epoch 6: loss 0.3189 val AP 0.5125 (best 0.5141) 0.8 min
+  R3a_cross_session_1200k_r10 epoch 7: loss 0.3102 val AP 0.5204 (best 0.5204) 0.9 min
+  R3a_cross_session_1200k_r10 epoch 8: loss 0.2854 val AP 0.4891 (best 0.5204) 1.0 min
+  R3a_cross_session_1200k_r10 epoch 9: loss 0.2874 val AP 0.5167 (best 0.5204) 1.2 min
+  R3a_cross_session_1200k_r10 epoch 10: loss 0.2621 val AP 0.5484 (best 0.5484) 1.3 min
+  R3a_cross_session_1200k_r10 epoch 11: loss 0.2572 val AP 0.4967 (best 0.5484) 1.4 min
+  R3a_cross_session_1200k_r10 epoch 12: loss 0.2441 val AP 0.5271 (best 0.5484) 1.5 min
+  R3a_cross_session_1200k_r10 epoch 13: loss 0.2321 val AP 0.5149 (best 0.5484) 1.6 min
+  R3a_cross_session_1200k_r10 epoch 14: loss 0.2261 val AP 0.5208 (best 0.5484) 1.8 min
+R3a cross-session 1200k_r10: fit 41832 (1832 pos), test 44602, 2.3 min
+  R3a_cross_session_1200k_r15 epoch 0: loss 0.8510 val AP 0.5209 (best 0.5209) 0.1 min
+  R3a_cross_session_1200k_r15 epoch 1: loss 0.5668 val AP 0.6020 (best 0.6020) 0.2 min
+  R3a_cross_session_1200k_r15 epoch 2: loss 0.4774 val AP 0.5919 (best 0.6020) 0.3 min
+  R3a_cross_session_1200k_r15 epoch 3: loss 0.4338 val AP 0.6400 (best 0.6400) 0.4 min
+  R3a_cross_session_1200k_r15 epoch 4: loss 0.3758 val AP 0.5430 (best 0.6400) 0.5 min
+  R3a_cross_session_1200k_r15 epoch 5: loss 0.3381 val AP 0.6362 (best 0.6400) 0.6 min
+  R3a_cross_session_1200k_r15 epoch 6: loss 0.2928 val AP 0.6745 (best 0.6745) 0.7 min
+  R3a_cross_session_1200k_r15 epoch 7: loss 0.2648 val AP 0.6255 (best 0.6745) 0.8 min
+  R3a_cross_session_1200k_r15 epoch 8: loss 0.2572 val AP 0.6388 (best 0.6745) 0.9 min
+  R3a_cross_session_1200k_r15 epoch 9: loss 0.2442 val AP 0.6466 (best 0.6745) 1.0 min
+  R3a_cross_session_1200k_r15 epoch 10: loss 0.2186 val AP 0.6644 (best 0.6745) 1.1 min
+R3a cross-session 1200k_r15: fit 40754 (754 pos), test 36113, 1.6 min
+  R3a_cross_frequency_720k_1200k epoch 0: loss 0.8090 val AP 0.2913 (best 0.2913) 0.1 min
+  R3a_cross_frequency_720k_1200k epoch 1: loss 0.4574 val AP 0.3475 (best 0.3475) 0.1 min
+  R3a_cross_frequency_720k_1200k epoch 2: loss 0.3728 val AP 0.5004 (best 0.5004) 0.2 min
+  R3a_cross_frequency_720k_1200k epoch 3: loss 0.3451 val AP 0.4656 (best 0.5004) 0.2 min
+  R3a_cross_frequency_720k_1200k epoch 4: loss 0.3714 val AP 0.5011 (best 0.5011) 0.3 min
+  R3a_cross_frequency_720k_1200k epoch 5: loss 0.2980 val AP 0.4645 (best 0.5011) 0.3 min
+  R3a_cross_frequency_720k_1200k epoch 6: loss 0.2539 val AP 0.5580 (best 0.5580) 0.4 min
+  R3a_cross_frequency_720k_1200k epoch 7: loss 0.2477 val AP 0.5650 (best 0.5650) 0.5 min
+  R3a_cross_frequency_720k_1200k epoch 8: loss 0.2256 val AP 0.5073 (best 0.5650) 0.5 min
+  R3a_cross_frequency_720k_1200k epoch 9: loss 0.2033 val AP 0.5450 (best 0.5650) 0.6 min
+  R3a_cross_frequency_720k_1200k epoch 10: loss 0.1898 val AP 0.5468 (best 0.5650) 0.6 min
+  R3a_cross_frequency_720k_1200k epoch 11: loss 0.1781 val AP 0.5200 (best 0.5650) 0.7 min
+R3a cross-frequency 720k->1200k: fit 26682 (620 pos), test 87830, 1.2 min
+  R3a_cross_frequency_1200k_720k epoch 0: loss 0.7359 val AP 0.4692 (best 0.4692) 0.1 min
+  R3a_cross_frequency_1200k_720k epoch 1: loss 0.5664 val AP 0.4955 (best 0.4955) 0.2 min
+  R3a_cross_frequency_1200k_720k epoch 2: loss 0.4655 val AP 0.5269 (best 0.5269) 0.3 min
+  R3a_cross_frequency_1200k_720k epoch 3: loss 0.3954 val AP 0.4184 (best 0.5269) 0.4 min
+  R3a_cross_frequency_1200k_720k epoch 4: loss 0.3677 val AP 0.6086 (best 0.6086) 0.5 min
+  R3a_cross_frequency_1200k_720k epoch 5: loss 0.3191 val AP 0.5937 (best 0.6086) 0.6 min
+  R3a_cross_frequency_1200k_720k epoch 6: loss 0.3053 val AP 0.6245 (best 0.6245) 0.7 min
+  R3a_cross_frequency_1200k_720k epoch 7: loss 0.2738 val AP 0.5453 (best 0.6245) 0.8 min
+  R3a_cross_frequency_1200k_720k epoch 8: loss 0.2583 val AP 0.7063 (best 0.7063) 0.9 min
+  R3a_cross_frequency_1200k_720k epoch 9: loss 0.2411 val AP 0.6600 (best 0.7063) 1.0 min
+  R3a_cross_frequency_1200k_720k epoch 10: loss 0.2233 val AP 0.6849 (best 0.7063) 1.1 min
+  R3a_cross_frequency_1200k_720k epoch 11: loss 0.2188 val AP 0.6440 (best 0.7063) 1.1 min
+  R3a_cross_frequency_1200k_720k epoch 12: loss 0.1998 val AP 0.6648 (best 0.7063) 1.2 min
+R3a cross-frequency 1200k->720k: fit 41135 (1135 pos), test 39065, 1.7 min
+  R3a_sea_fa_lake_sea epoch 0: loss 0.7783 val AP 0.3987 (best 0.3987) 0.1 min
+  R3a_sea_fa_lake_sea epoch 1: loss 0.5147 val AP 0.4212 (best 0.4212) 0.2 min
+  R3a_sea_fa_lake_sea epoch 2: loss 0.4249 val AP 0.4671 (best 0.4671) 0.3 min
+  R3a_sea_fa_lake_sea epoch 3: loss 0.3848 val AP 0.4756 (best 0.4756) 0.4 min
+  R3a_sea_fa_lake_sea epoch 4: loss 0.3575 val AP 0.3794 (best 0.4756) 0.5 min
+  R3a_sea_fa_lake_sea epoch 5: loss 0.3381 val AP 0.5045 (best 0.5045) 0.6 min
+  R3a_sea_fa_lake_sea epoch 6: loss 0.3183 val AP 0.4814 (best 0.5045) 0.7 min
+  R3a_sea_fa_lake_sea epoch 7: loss 0.3006 val AP 0.4881 (best 0.5045) 0.8 min
+  R3a_sea_fa_lake_sea epoch 8: loss 0.2912 val AP 0.5370 (best 0.5370) 0.9 min
+  R3a_sea_fa_lake_sea epoch 9: loss 0.2738 val AP 0.5031 (best 0.5370) 1.1 min
+  R3a_sea_fa_lake_sea epoch 10: loss 0.2661 val AP 0.5277 (best 0.5370) 1.2 min
+  R3a_sea_fa_lake_sea epoch 11: loss 0.2518 val AP 0.5474 (best 0.5474) 1.3 min
+  R3a_sea_fa_lake_sea epoch 12: loss 0.2478 val AP 0.5460 (best 0.5474) 1.4 min
+  R3a_sea_fa_lake_sea epoch 13: loss 0.2397 val AP 0.5573 (best 0.5573) 1.5 min
+  R3a_sea_fa_lake_sea epoch 14: loss 0.2379 val AP 0.5499 (best 0.5573) 1.6 min
+R3a sea-fa lake->sea: fit 41867 (1867 pos), test 84422, 2.2 min
+  R3b_cross_session_720k_r10 epoch 0: loss 0.5735 val AP 0.5196 (best 0.5196) 1.4 min
+  R3b_cross_session_720k_r10 epoch 1: loss 0.3385 val AP 0.3467 (best 0.5196) 2.9 min
+  R3b_cross_session_720k_r10 epoch 2: loss 0.3142 val AP 0.8203 (best 0.8203) 4.3 min
+  R3b_cross_session_720k_r10 epoch 3: loss 0.2652 val AP 0.7546 (best 0.8203) 5.7 min
+  R3b_cross_session_720k_r10 epoch 4: loss 0.2404 val AP 0.5715 (best 0.8203) 7.2 min
+  R3b_cross_session_720k_r10 epoch 5: loss 0.2192 val AP 0.7394 (best 0.8203) 8.6 min
+  R3b_cross_session_720k_r10 epoch 6: loss 0.1871 val AP 0.8376 (best 0.8376) 10.0 min
+  R3b_cross_session_720k_r10 epoch 7: loss 0.1756 val AP 0.7768 (best 0.8376) 11.4 min
+  R3b_cross_session_720k_r10 epoch 8: loss 0.1588 val AP 0.8731 (best 0.8731) 12.8 min
+  R3b_cross_session_720k_r10 epoch 9: loss 0.1478 val AP 0.8779 (best 0.8779) 14.2 min
+  R3b_cross_session_720k_r10 epoch 10: loss 0.1270 val AP 0.8753 (best 0.8779) 15.6 min
+  R3b_cross_session_720k_r10 epoch 11: loss 0.1240 val AP 0.8778 (best 0.8779) 17.0 min
+R3b cross-session 720k_r10: fit 41793 (1793 pos), test 18609, 17.8 min
+  R3b_cross_session_720k_r15 epoch 0: loss 0.5094 val AP 0.2900 (best 0.2900) 1.5 min
+  R3b_cross_session_720k_r15 epoch 1: loss 0.3283 val AP 0.3756 (best 0.3756) 3.1 min
+  R3b_cross_session_720k_r15 epoch 2: loss 0.2656 val AP 0.6186 (best 0.6186) 4.7 min
+  R3b_cross_session_720k_r15 epoch 3: loss 0.2026 val AP 0.3912 (best 0.6186) 6.2 min
+  R3b_cross_session_720k_r15 epoch 4: loss 0.2357 val AP 0.5565 (best 0.6186) 7.7 min
+  R3b_cross_session_720k_r15 epoch 5: loss 0.1999 val AP 0.6233 (best 0.6233) 9.3 min
+  R3b_cross_session_720k_r15 epoch 6: loss 0.1729 val AP 0.6304 (best 0.6304) 10.8 min
+  R3b_cross_session_720k_r15 epoch 7: loss 0.1568 val AP 0.6293 (best 0.6304) 12.3 min
+  R3b_cross_session_720k_r15 epoch 8: loss 0.1236 val AP 0.6140 (best 0.6304) 14.0 min
+  R3b_cross_session_720k_r15 epoch 9: loss 0.1126 val AP 0.6992 (best 0.6992) 15.7 min
+  R3b_cross_session_720k_r15 epoch 10: loss 0.1077 val AP 0.6779 (best 0.6992) 17.3 min
+  R3b_cross_session_720k_r15 epoch 11: loss 0.1003 val AP 0.6782 (best 0.6992) 19.0 min
+R3b cross-session 720k_r15: fit 40869 (869 pos), test 18897, 20.1 min
+  R3b_cross_session_1200k_r10 epoch 0: loss 0.6010 val AP 0.2320 (best 0.2320) 1.5 min
+  R3b_cross_session_1200k_r10 epoch 1: loss 0.3902 val AP 0.3710 (best 0.3710) 2.9 min
+  R3b_cross_session_1200k_r10 epoch 2: loss 0.3124 val AP 0.6183 (best 0.6183) 4.3 min
+  R3b_cross_session_1200k_r10 epoch 3: loss 0.2764 val AP 0.6523 (best 0.6523) 5.8 min
+  R3b_cross_session_1200k_r10 epoch 4: loss 0.2563 val AP 0.6177 (best 0.6523) 7.2 min
+  R3b_cross_session_1200k_r10 epoch 5: loss 0.2171 val AP 0.6348 (best 0.6523) 8.6 min
+  R3b_cross_session_1200k_r10 epoch 6: loss 0.1938 val AP 0.7218 (best 0.7218) 10.0 min
+  R3b_cross_session_1200k_r10 epoch 7: loss 0.1804 val AP 0.7455 (best 0.7455) 11.4 min
+  R3b_cross_session_1200k_r10 epoch 8: loss 0.1568 val AP 0.7881 (best 0.7881) 12.7 min
+  R3b_cross_session_1200k_r10 epoch 9: loss 0.1440 val AP 0.8043 (best 0.8043) 14.0 min
+  R3b_cross_session_1200k_r10 epoch 10: loss 0.1301 val AP 0.8034 (best 0.8043) 15.4 min
+  R3b_cross_session_1200k_r10 epoch 11: loss 0.1204 val AP 0.7764 (best 0.8043) 16.7 min
+R3b cross-session 1200k_r10: fit 41832 (1832 pos), test 44602, 17.8 min
+  R3b_cross_session_1200k_r15 epoch 0: loss 0.7284 val AP 0.5423 (best 0.5423) 1.4 min
+  R3b_cross_session_1200k_r15 epoch 1: loss 0.4784 val AP 0.6477 (best 0.6477) 2.9 min
+  R3b_cross_session_1200k_r15 epoch 2: loss 0.4076 val AP 0.6606 (best 0.6606) 4.4 min
+  R3b_cross_session_1200k_r15 epoch 3: loss 0.3332 val AP 0.7409 (best 0.7409) 5.8 min
+  R3b_cross_session_1200k_r15 epoch 4: loss 0.2576 val AP 0.7747 (best 0.7747) 7.3 min
+  R3b_cross_session_1200k_r15 epoch 5: loss 0.2170 val AP 0.7159 (best 0.7747) 8.8 min
+  R3b_cross_session_1200k_r15 epoch 6: loss 0.1928 val AP 0.7741 (best 0.7747) 10.2 min
+  R3b_cross_session_1200k_r15 epoch 7: loss 0.1668 val AP 0.8037 (best 0.8037) 11.7 min
+  R3b_cross_session_1200k_r15 epoch 8: loss 0.1445 val AP 0.7852 (best 0.8037) 13.1 min
+  R3b_cross_session_1200k_r15 epoch 9: loss 0.1283 val AP 0.8223 (best 0.8223) 14.6 min
+  R3b_cross_session_1200k_r15 epoch 10: loss 0.1039 val AP 0.8274 (best 0.8274) 16.0 min
+  R3b_cross_session_1200k_r15 epoch 11: loss 0.1000 val AP 0.8238 (best 0.8274) 17.5 min
+R3b cross-session 1200k_r15: fit 40754 (754 pos), test 36113, 18.6 min
+  R3b_cross_frequency_720k_1200k epoch 0: loss 0.7290 val AP 0.1529 (best 0.1529) 0.8 min
+  R3b_cross_frequency_720k_1200k epoch 1: loss 0.5158 val AP 0.3525 (best 0.3525) 1.7 min
+  R3b_cross_frequency_720k_1200k epoch 2: loss 0.4591 val AP 0.4743 (best 0.4743) 2.5 min
+  R3b_cross_frequency_720k_1200k epoch 3: loss 0.3680 val AP 0.2107 (best 0.4743) 3.4 min
+  R3b_cross_frequency_720k_1200k epoch 4: loss 0.3215 val AP 0.2515 (best 0.4743) 4.3 min
+  R3b_cross_frequency_720k_1200k epoch 5: loss 0.3053 val AP 0.2934 (best 0.4743) 5.1 min
+  R3b_cross_frequency_720k_1200k epoch 6: loss 0.2332 val AP 0.5835 (best 0.5835) 6.0 min
+  R3b_cross_frequency_720k_1200k epoch 7: loss 0.2100 val AP 0.6258 (best 0.6258) 6.8 min
+  R3b_cross_frequency_720k_1200k epoch 8: loss 0.1853 val AP 0.5694 (best 0.6258) 7.7 min
+  R3b_cross_frequency_720k_1200k epoch 9: loss 0.1548 val AP 0.6751 (best 0.6751) 8.6 min
+  R3b_cross_frequency_720k_1200k epoch 10: loss 0.1344 val AP 0.6989 (best 0.6989) 9.6 min
+  R3b_cross_frequency_720k_1200k epoch 11: loss 0.1374 val AP 0.6782 (best 0.6989) 10.5 min
+R3b cross-frequency 720k->1200k: fit 26682 (620 pos), test 87830, 12.0 min
+  R3b_cross_frequency_1200k_720k epoch 0: loss 0.4723 val AP 0.5413 (best 0.5413) 1.4 min
+  R3b_cross_frequency_1200k_720k epoch 1: loss 0.2933 val AP 0.8166 (best 0.8166) 2.7 min
+  R3b_cross_frequency_1200k_720k epoch 2: loss 0.2588 val AP 0.7119 (best 0.8166) 4.1 min
+  R3b_cross_frequency_1200k_720k epoch 3: loss 0.1984 val AP 0.6797 (best 0.8166) 5.6 min
+  R3b_cross_frequency_1200k_720k epoch 4: loss 0.2077 val AP 0.7051 (best 0.8166) 6.9 min
+  R3b_cross_frequency_1200k_720k epoch 5: loss 0.1831 val AP 0.7538 (best 0.8166) 8.4 min
+R3b cross-frequency 1200k->720k: fit 41135 (1135 pos), test 39065, 9.5 min
+  R3b_sea_fa_lake_sea epoch 0: loss 0.5447 val AP 0.3067 (best 0.3067) 1.5 min
+  R3b_sea_fa_lake_sea epoch 1: loss 0.3216 val AP 0.6305 (best 0.6305) 3.2 min
+  R3b_sea_fa_lake_sea epoch 2: loss 0.2984 val AP 0.6174 (best 0.6305) 5.0 min
+  R3b_sea_fa_lake_sea epoch 3: loss 0.2367 val AP 0.6837 (best 0.6837) 6.6 min
+  R3b_sea_fa_lake_sea epoch 4: loss 0.2215 val AP 0.7138 (best 0.7138) 8.2 min
+  R3b_sea_fa_lake_sea epoch 5: loss 0.1989 val AP 0.7156 (best 0.7156) 9.8 min
+  R3b_sea_fa_lake_sea epoch 6: loss 0.1996 val AP 0.7976 (best 0.7976) 11.3 min
+  R3b_sea_fa_lake_sea epoch 7: loss 0.1566 val AP 0.7957 (best 0.7976) 12.8 min
+  R3b_sea_fa_lake_sea epoch 8: loss 0.1421 val AP 0.7597 (best 0.7976) 14.3 min
+  R3b_sea_fa_lake_sea epoch 9: loss 0.1337 val AP 0.7699 (best 0.7976) 15.7 min
+  R3b_sea_fa_lake_sea epoch 10: loss 0.1270 val AP 0.7993 (best 0.7993) 17.2 min
+  R3b_sea_fa_lake_sea epoch 11: loss 0.1165 val AP 0.8066 (best 0.8066) 18.7 min
+R3b sea-fa lake->sea: fit 41867 (1867 pos), test 84422, 20.4 min
+R4a cross-session 720k_r10: fit 41793 (1793 pos), test 18609, 0.5 min
+R4a cross-session 720k_r15: fit 40869 (869 pos), test 18897, 0.5 min
+R4a cross-session 1200k_r10: fit 41832 (1832 pos), test 44602, 0.5 min
+R4a cross-session 1200k_r15: fit 40754 (754 pos), test 36113, 0.5 min
+R4a cross-frequency 720k->1200k: fit 26682 (620 pos), test 87830, 0.5 min
+R4a cross-frequency 1200k->720k: fit 41135 (1135 pos), test 39065, 0.5 min
+R4a sea-fa lake->sea: fit 41867 (1867 pos), test 84422, 0.7 min
+  R4b_cross_session_720k_r10 epoch 0: loss 0.5261 val AP 0.4921 (best 0.4921) 1.3 min
+  R4b_cross_session_720k_r10 epoch 1: loss 0.2642 val AP 0.6468 (best 0.6468) 2.7 min
+  R4b_cross_session_720k_r10 epoch 2: loss 0.2111 val AP 0.6895 (best 0.6895) 4.1 min
+  R4b_cross_session_720k_r10 epoch 3: loss 0.1672 val AP 0.7180 (best 0.7180) 5.4 min
+  R4b_cross_session_720k_r10 epoch 4: loss 0.1401 val AP 0.7842 (best 0.7842) 6.6 min
+  R4b_cross_session_720k_r10 epoch 5: loss 0.1207 val AP 0.7614 (best 0.7842) 8.0 min
+  R4b_cross_session_720k_r10 epoch 6: loss 0.1060 val AP 0.8476 (best 0.8476) 9.3 min
+  R4b_cross_session_720k_r10 epoch 7: loss 0.0969 val AP 0.8557 (best 0.8557) 10.6 min
+R4b cross-session 720k_r10: fit 13793 (1793 pos), test 18609, 11.9 min
+  R4b_cross_session_720k_r15 epoch 0: loss 0.4890 val AP 0.4042 (best 0.4042) 1.5 min
+  R4b_cross_session_720k_r15 epoch 1: loss 0.2537 val AP 0.5575 (best 0.5575) 3.0 min
+  R4b_cross_session_720k_r15 epoch 2: loss 0.1746 val AP 0.4773 (best 0.5575) 4.5 min
+  R4b_cross_session_720k_r15 epoch 3: loss 0.1584 val AP 0.4476 (best 0.5575) 6.1 min
+  R4b_cross_session_720k_r15 epoch 4: loss 0.1304 val AP 0.5288 (best 0.5575) 7.6 min
+R4b cross-session 720k_r15: fit 12869 (869 pos), test 18897, 8.9 min
+  R4b_cross_session_1200k_r10 epoch 0: loss 0.5116 val AP 0.2593 (best 0.2593) 1.2 min
+  R4b_cross_session_1200k_r10 epoch 1: loss 0.2667 val AP 0.2120 (best 0.2593) 2.4 min
+  R4b_cross_session_1200k_r10 epoch 2: loss 0.2050 val AP 0.5015 (best 0.5015) 3.6 min
+  R4b_cross_session_1200k_r10 epoch 3: loss 0.1661 val AP 0.6169 (best 0.6169) 4.8 min
+  R4b_cross_session_1200k_r10 epoch 4: loss 0.1644 val AP 0.5272 (best 0.6169) 6.0 min
+  R4b_cross_session_1200k_r10 epoch 5: loss 0.1262 val AP 0.5835 (best 0.6169) 7.3 min
+  R4b_cross_session_1200k_r10 epoch 6: loss 0.1082 val AP 0.6949 (best 0.6949) 8.5 min
+  R4b_cross_session_1200k_r10 epoch 7: loss 0.1055 val AP 0.7309 (best 0.7309) 9.7 min
+R4b cross-session 1200k_r10: fit 13832 (1832 pos), test 44602, 10.9 min
+  R4b_cross_session_1200k_r15 epoch 0: loss 0.5930 val AP 0.2885 (best 0.2885) 1.3 min
+  R4b_cross_session_1200k_r15 epoch 1: loss 0.2682 val AP 0.2368 (best 0.2885) 2.7 min
+  R4b_cross_session_1200k_r15 epoch 2: loss 0.1802 val AP 0.4583 (best 0.4583) 4.0 min
+  R4b_cross_session_1200k_r15 epoch 3: loss 0.1381 val AP 0.6212 (best 0.6212) 5.4 min
+  R4b_cross_session_1200k_r15 epoch 4: loss 0.0960 val AP 0.7181 (best 0.7181) 6.7 min
+  R4b_cross_session_1200k_r15 epoch 5: loss 0.0860 val AP 0.7414 (best 0.7414) 8.0 min
+  R4b_cross_session_1200k_r15 epoch 6: loss 0.0721 val AP 0.7512 (best 0.7512) 9.4 min
+  R4b_cross_session_1200k_r15 epoch 7: loss 0.0591 val AP 0.7651 (best 0.7651) 10.8 min
+R4b cross-session 1200k_r15: fit 12754 (754 pos), test 36113, 12.1 min
+  R4b_cross_frequency_720k_1200k epoch 0: loss 0.6315 val AP 0.0744 (best 0.0744) 1.0 min
+  R4b_cross_frequency_720k_1200k epoch 1: loss 0.3300 val AP 0.1721 (best 0.1721) 2.0 min
+  R4b_cross_frequency_720k_1200k epoch 2: loss 0.2208 val AP 0.3239 (best 0.3239) 3.1 min
+  R4b_cross_frequency_720k_1200k epoch 3: loss 0.1964 val AP 0.5200 (best 0.5200) 4.1 min
+  R4b_cross_frequency_720k_1200k epoch 4: loss 0.1535 val AP 0.6330 (best 0.6330) 5.1 min
+  R4b_cross_frequency_720k_1200k epoch 5: loss 0.1315 val AP 0.6018 (best 0.6330) 6.1 min
+  R4b_cross_frequency_720k_1200k epoch 6: loss 0.1219 val AP 0.6444 (best 0.6444) 7.2 min
+  R4b_cross_frequency_720k_1200k epoch 7: loss 0.1044 val AP 0.6454 (best 0.6454) 8.2 min
+R4b cross-frequency 720k->1200k: fit 12620 (620 pos), test 87830, 9.8 min
+  R4b_cross_frequency_1200k_720k epoch 0: loss 0.5309 val AP 0.4886 (best 0.4886) 1.3 min
+  R4b_cross_frequency_1200k_720k epoch 1: loss 0.2509 val AP 0.7087 (best 0.7087) 2.5 min
+  R4b_cross_frequency_1200k_720k epoch 2: loss 0.1848 val AP 0.7184 (best 0.7184) 3.8 min
+  R4b_cross_frequency_1200k_720k epoch 3: loss 0.1553 val AP 0.7378 (best 0.7378) 5.1 min
+  R4b_cross_frequency_1200k_720k epoch 4: loss 0.1286 val AP 0.7562 (best 0.7562) 6.3 min
+  R4b_cross_frequency_1200k_720k epoch 5: loss 0.1006 val AP 0.8095 (best 0.8095) 7.6 min
+  R4b_cross_frequency_1200k_720k epoch 6: loss 0.0907 val AP 0.8324 (best 0.8324) 8.9 min
+  R4b_cross_frequency_1200k_720k epoch 7: loss 0.0813 val AP 0.8430 (best 0.8430) 10.1 min
+R4b cross-frequency 1200k->720k: fit 13135 (1135 pos), test 39065, 11.4 min
+  R4b_sea_fa_lake_sea epoch 0: loss 0.4880 val AP 0.5035 (best 0.5035) 1.4 min
+  R4b_sea_fa_lake_sea epoch 1: loss 0.2599 val AP 0.5800 (best 0.5800) 2.8 min
+  R4b_sea_fa_lake_sea epoch 2: loss 0.2041 val AP 0.6237 (best 0.6237) 4.2 min
+  R4b_sea_fa_lake_sea epoch 3: loss 0.1557 val AP 0.6390 (best 0.6390) 5.7 min
+  R4b_sea_fa_lake_sea epoch 4: loss 0.1337 val AP 0.7144 (best 0.7144) 7.1 min
+  R4b_sea_fa_lake_sea epoch 5: loss 0.1159 val AP 0.7679 (best 0.7679) 8.5 min
+  R4b_sea_fa_lake_sea epoch 6: loss 0.1008 val AP 0.7628 (best 0.7679) 9.9 min
+  R4b_sea_fa_lake_sea epoch 7: loss 0.0859 val AP 0.7618 (best 0.7679) 11.3 min
+R4b sea-fa lake->sea: fit 13867 (1867 pos), test 84422, 13.4 min

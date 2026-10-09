@@ -16,7 +16,7 @@ but 47% on unseen data (Nga et al., Remote Sensing 16(21):4036, 2024).
 | S0 Scaffold: repo, CI, data fetcher | done |
 | W1 Signal atlas | NOAA and MBARI done ([atlas](reports/signal_atlas.md), [noise register](reports/noise_register.csv)); UATD and Bath pending network access |
 | W2 Physics and DSP front end | done: `echofind.dsp` + `echofind.sim`, tests vs closed form, Pd-vs-SNR, [design note](reports/w2_frontend_design.md); UATD/Bath range-profile bridge pending |
-| W3 Model ladder | R0–R2 checkpoint on UATD ([results](reports/w3_ladder.md)): cross-session recall 0.41 at 0.05 FA/frame for R2; every rung fails across frequency; Bath [labelling protocol](reports/w3_bath_labelling_protocol.md) written, box labels pending; R3–R5 next (S4) |
+| W3 Model ladder | R0–R2 checkpoint on UATD ([results](reports/w3_ladder.md)): cross-session recall 0.41 at 0.05 FA/frame for R2; every rung fails across frequency; Bath [labelling protocol](reports/w3_bath_labelling_protocol.md) written, box labels pending; S4 deep rungs ([report](reports/s4_deep_rungs.md)): 2-D CNN R3b reaches 0.61 cross-session and 0.56 at 720→1200 kHz but misses the keep rule on 1200→720; pretrained ResNet-50/MobileNetV3 do worse; R5 not testable on UATD |
 | W4 Field-honest evaluation | done on UATD ([report](reports/w4_generalization.md), [model card](reports/model_card.md)): mission-cost operating point, threshold recalibration from body-free frames, OOD rescan score, input QA with fault injection, FMEA-lite; Bath leave-one-site-out and external sets pending labels |
 | W5 Edge deployment | not started |
 | W6 Data strategy memo | not started |

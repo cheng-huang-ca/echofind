@@ -1,0 +1,5 @@
+{
+  "desc": "ResNet-50 ImageNet, frozen; logistic head",
+  "max_neg": 40000,
+  "seed": 0
+}
