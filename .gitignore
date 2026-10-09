@@ -19,3 +19,6 @@ edge/build/
 # local-only files
 Job Posting.docx
 ~$*
+
+# S6: rebuilt from technical_report.md (figures embedded)
+reports/technical_report.html
