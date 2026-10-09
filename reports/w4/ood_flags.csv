@@ -1,0 +1,9 @@
+source,test,frames,flag_rate,auroc_vs_new_session
+lake 720 kHz,"in-dist, new session",809,0.1335,
+lake 720 kHz,new frequency,4663,0.1244,0.5265
+lake 720 kHz,"new site, same frequency",614,0.2215,0.5623
+lake 720 kHz,new site and frequency,1637,0.3177,0.7099
+lake 1200 kHz,"in-dist, new session",1624,0.0289,
+lake 1200 kHz,new frequency,2286,0.1050,0.6631
+lake 1200 kHz,"new site, same frequency",1637,0.2804,0.7304
+lake 1200 kHz,new site and frequency,614,0.2427,0.6899
