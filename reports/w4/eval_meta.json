@@ -1,0 +1,29 @@
+{
+  "script": "w4_eval",
+  "git_commit": "e5bc3490fcdcee31a1052a33379a11cb77def023",
+  "data_manifest": "9784aec034bc1d88",
+  "config": {
+    "fapf": 0.05,
+    "boot": 1000,
+    "seed": 0,
+    "bands_m": [
+      [
+        0,
+        6
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        9,
+        12
+      ],
+      [
+        12,
+        30
+      ]
+    ],
+    "frames_per_scan": 30
+  }
+}

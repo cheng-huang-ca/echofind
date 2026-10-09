@@ -1,0 +1,5 @@
+site,freq_khz,frames,fail_saturation,fail_dead_beams,fail_dropped_rows,fail_low_signal,qa_pass
+lake,720,2286,0.0000,0.0000,0.0000,0.0000,1.0000
+lake,1200,4663,0.0000,0.0000,0.0000,0.0000,1.0000
+sea,720,614,0.0000,0.0000,0.0000,0.0000,1.0000
+sea,1200,1637,0.0000,0.0000,0.0000,0.0000,1.0000
