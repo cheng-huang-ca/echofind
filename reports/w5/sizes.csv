@@ -1,0 +1,11 @@
+artifact,bytes
+ef_bench.exe,3753736.0
+libef_edge.dll,1542450.0
+object generated/models.c.obj,1263907.0
+object generated/models.c.obj,1263907.0
+"model r0 (- trees, - leaves)",
+"model r1 (- trees, - leaves)",
+"model r2_t25 (25 trees, 375 leaves)",
+"model r2_t50 (50 trees, 750 leaves)",
+"model r2_t100 (100 trees, 1500 leaves)",
+"model r2_t300 (300 trees, 4500 leaves)",

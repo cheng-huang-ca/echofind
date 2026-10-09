@@ -1,0 +1,10 @@
+# name kind args... expected_file (written by scripts/w5_export.py)
+demod_80k demod 400000.0 80000.0 5 0.0 x_80k.bin bp_80k.bin lp_80k.bin iq_80k.bin
+mf_80k mf iqn_80k.bin rep_80k.bin mf_80k.bin
+cfar_ca_stride1 cfar 0 32 2 -1 1 0.0001 p_80k.bin thr_ca_s1.bin
+cfar_ca_stride4 cfar 0 32 8 -1 4 0.0001 p_80k.bin thr_ca_s4.bin
+cfar_go_stride1 cfar 1 32 2 -1 1 0.0001 p_80k.bin thr_go_s1.bin
+cfar_go_stride4 cfar 1 32 8 -1 4 0.0001 p_80k.bin thr_go_s4.bin
+cfar_os_stride1 cfar 3 32 2 -1 1 0.0001 p_80k.bin thr_os_s1.bin
+cfar_os_stride4 cfar 3 32 8 -1 4 0.0001 p_80k.bin thr_os_s4.bin
+tvg_80k tvg 80000.0 1465.2549791861613 0.0 0.00166080191586872 40.0 1.0 p_tvgin_80k.bin tvg_80k.bin

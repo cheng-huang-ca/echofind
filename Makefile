@@ -3,7 +3,7 @@
 PY := uv run python
 ONLY ?=
 
-.PHONY: setup data data-dry test lint check atlas ladder eval deep
+.PHONY: setup data data-dry test lint check atlas ladder eval edge strategy deep
 
 setup:            ## install the core package plus dev tools
 	uv sync --group dev
@@ -38,6 +38,17 @@ eval:             ## W4 field-honest evaluation (needs `make ladder` first)
 	$(PY) scripts/w4_qa.py
 	$(PY) scripts/w4_eval.py
 	$(PY) scripts/w4_faults.py
+
+edge:             ## W5 C++ edge build, parity tests and benchmark (needs `make ladder` first)
+	$(PY) scripts/w5_export.py
+	cmake -S edge -B edge/build -DCMAKE_BUILD_TYPE=Release
+	cmake --build edge/build
+	ctest --test-dir edge/build --output-on-failure
+	uv run pytest tests/test_edge_parity.py
+	$(PY) scripts/w5_bench.py
+
+strategy:         ## W6 coverage audit, ICC and sample size, field design (needs `make ladder`)
+	$(PY) scripts/w6_strategy.py
 
 deep:             ## S4 deep rungs R3/R4 on CPU (needs `make ladder` and `uv sync --extra dl`; hours)
 	$(PY) scripts/s4_snippets.py

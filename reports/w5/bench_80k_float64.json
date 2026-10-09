@@ -1,0 +1,75 @@
+{
+ "precision": "float64",
+ "pings": 500,
+ "samples_passband": 27300,
+ "samples_baseband": 5460,
+ "cands_per_ping": 20,
+ "mean_cfar_candidates": 1.0,
+ "peak_rss_mb": 8.71,
+ "demodulate_us": [
+  2686.5,
+  3747.2,
+  5655.7
+ ],
+ "matched_filter_us": [
+  1192.4,
+  1943.3,
+  2186.5
+ ],
+ "power_os_cfar_us": [
+  1817.3,
+  2673.9,
+  3484.7
+ ],
+ "ca_cfar_extra_us": [
+  74.5,
+  154.8,
+  299.3
+ ],
+ "candidates_tvg_us": [
+  186.6,
+  409.9,
+  527.3
+ ],
+ "classifier_us": [
+  130.5,
+  226.5,
+  377.8
+ ],
+ "model_r0_us": [
+  1.1,
+  1.9,
+  20.7
+ ],
+ "model_r1_us": [
+  0.5,
+  0.9,
+  1.4
+ ],
+ "model_r2_t25_us": [
+  6.6,
+  11.7,
+  121.9
+ ],
+ "model_r2_t50_us": [
+  14.7,
+  25.3,
+  76.9
+ ],
+ "model_r2_t100_us": [
+  34.3,
+  58.2,
+  110.9
+ ],
+ "model_r2_t300_us": [
+  130.5,
+  226.5,
+  377.8
+ ],
+ "total_us": [
+  6134.0,
+  9222.3,
+  10943.3
+ ],
+ "sink": 6764970.0
+}
